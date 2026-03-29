@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Audio asset review and regeneration tool",
+  "description": "Multi-phase AI asset generation service for audio and visual game assets",
   "scripts": {
     "start": "node server.js --project arena",
     "dev": "node --watch server.js --project arena",

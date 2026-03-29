@@ -85,7 +85,7 @@ curl -X POST https://assetgen.korczewski.de/api/library/gunshot_rifle/generate
 # Assign to project
 curl -X POST https://assetgen.korczewski.de/api/library/gunshot_rifle/assign \
   -H 'Content-Type: application/json' \
-  -d '{"project":"arena","slot":"gunshot_rifle"}'
+  -d '{"project":"arena","targetPath":"gunshot_rifle"}'
 ```
 
 ### Visual Assets
@@ -327,6 +327,8 @@ Priorities are configured in `config/visual-config.json`. Categories can overrid
 | `HYPER3D_API_KEY` | hyper3d adapter | Hyper3D Rodin API key (paid subscription) |
 | `HUNYUAN3D_API_KEY` or `FAL_KEY` | hunyuan3d adapter | fal.ai API key for Hunyuan3D cloud ($0.16/gen) |
 | `SKETCHFAB_API_KEY` | sketchfab adapter | Sketchfab v3 API token (free account) |
+| `GEMINI_API_KEY` | gemini-imagen adapter | Google Gemini API key (concept art fallback) |
+| `SILICONFLOW_API_KEY` | siliconflow adapter | SiliconFlow API key (concept art fallback) |
 
 **Default pipeline is fully free**: `blender-mcp` + `hunyuan3d-local` need no API keys (just Blender + GPU worker running). Figma integration requires a free Figma account + API token.
 

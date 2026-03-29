@@ -66,6 +66,18 @@ spec:
                   name: assetgen-secrets
                   key: FIGMA_FILE_KEY
                   optional: true
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: GEMINI_API_KEY
+                  optional: true
+            - name: SILICONFLOW_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: SILICONFLOW_API_KEY
+                  optional: true
             - name: TZ
               value: Europe/Berlin
           ports:
