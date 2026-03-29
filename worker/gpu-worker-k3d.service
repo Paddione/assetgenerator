@@ -1,0 +1,17 @@
+[Unit]
+Description=Assetgenerator GPU Worker (k3d local)
+After=network-online.target
+Conflicts=gpu-worker.service
+
+[Service]
+EnvironmentFile=/home/patrick/projects/Assetgenerator/.env
+Type=simple
+WorkingDirectory=/home/patrick/projects/Assetgenerator/worker
+ExecStart=/usr/bin/node index.js
+Environment=WORKER_SERVER_URL=ws://localhost:8080/ws/worker
+Environment=IDLE_TIMEOUT_MS=600000
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

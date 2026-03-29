@@ -509,6 +509,13 @@ app.get('/api/library', (req, res) => {
   res.json(loadLibrary());
 });
 
+app.get('/api/library/:id', (req, res) => {
+  const library = loadLibrary();
+  const sound = library.sounds[req.params.id];
+  if (!sound) return res.status(404).json({ error: 'Sound not found' });
+  res.json(sound);
+});
+
 app.get('/api/library/:id/audio', (req, res) => {
   const library = loadLibrary();
   const sound = library.sounds[req.params.id];
@@ -1651,6 +1658,9 @@ app.post('/api/visual-library/:id/figma-source', (req, res) => {
 // =============================================================================
 
 app.get('/api/sketchfab/search', async (req, res) => {
+  if (!process.env.SKETCHFAB_API_KEY) {
+    return res.status(400).json({ error: 'SKETCHFAB_API_KEY not set' });
+  }
   try {
     const adapter = await import(join(__dirname, 'adapters', 'sketchfab.js'));
     const results = await adapter.search({

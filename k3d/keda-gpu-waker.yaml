@@ -1,0 +1,31 @@
+# =============================================================================
+# KEDA ScaledObject — auto-scales gpu-waker based on assetgenerator queue depth
+# =============================================================================
+# Polls GET /api/queue-depth every 30s. When "depth" > 0, scales gpu-waker
+# from 0→1. When depth == 0 for the cooldown period, scales back to 0.
+#
+# Prerequisites:
+#   KEDA must be installed:
+#     helm repo add kedacore https://kedacore.github.io/charts
+#     helm install keda kedacore/keda --namespace keda-system --create-namespace
+# =============================================================================
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: gpu-waker-scaler
+  labels:
+    app: gpu-waker
+spec:
+  scaleTargetRef:
+    name: gpu-waker
+  pollingInterval: 30               # Check queue depth every 30s
+  cooldownPeriod: 300                # Wait 5 min of empty queue before scaling to 0
+  minReplicaCount: 0                 # Scale to zero when idle
+  maxReplicaCount: 1                 # Only need one waker
+  triggers:
+    - type: metrics-api
+      metadata:
+        # In-cluster URL — the assetgenerator Service in the same namespace
+        url: "http://assetgenerator.assetgen.svc:5200/api/queue-depth"
+        valueLocation: "depth"
+        targetValue: "1"

@@ -4,11 +4,6 @@
 
 Multi-phase AI asset generation service for Arena and L2P. Express API + WebSocket server orchestrating audio and visual asset generation across local GPU and cloud backends. No database — JSON state files + NAS storage.
 
-**Documentation references:**
-- This file -- Quick start, commands
-- [docs/services/assetgenerator.md](../docs/services/assetgenerator.md) -- Deep dive: GPU worker, pipelines, API
-- [docs/guides/deployment.md](../docs/guides/deployment.md) -- Deployment to k3s
-
 ## Architecture
 
 - **Server**: Express.js (Node 22 ESM), port 5200, single-file (`server.js`)
@@ -112,7 +107,10 @@ When asked to generate visual assets, collect these details:
 | `sketchfabUid` | No | Sketchfab model UID (for sourcing) | `abc123def456` |
 | `weaponModel` | No | Path to weapon GLB (replaces procedural geometry) | `models/weapons/rifle.glb` |
 
-**Visual pipeline phases:** `concept` → `model` → `render` → `pack` (or `full` for all)
+**Visual pipeline phases:** `concept` → `model` → `render` → `pack` → `rig` → `animate` (or `full` for all)
+
+- Phases `rig` and `animate` use the `mixamo` adapter (auto-rigging via Blender + Mixamo-style animations)
+- Background removal (`remove-bg` adapter) runs automatically after concept generation for non-tile categories
 
 **API calls:**
 ```bash
@@ -141,7 +139,7 @@ curl -X POST https://assetgen.korczewski.de/api/visual-library/soldier_basic/ass
 
 | Category | Directions | Default Poses | Size | 3D |
 |----------|-----------|---------------|------|----|
-| characters | 8 | stand, gun, machine, reload, hold, silencer | 64px | Yes |
+| characters | 8 | stand, walk, gun, machine, reload, hold, silencer | 64px | Yes |
 | weapons | 1 | idle | 32px | Yes |
 | items | 1 | idle | 32px | Yes |
 | tiles | 1 | idle | 32px | No (2D only) |
@@ -337,15 +335,20 @@ Priorities are configured in `config/visual-config.json`. Categories can overrid
 ```bash
 npm run dev           # node --watch server.js --project arena (port 5200)
 npm run start         # node server.js --project arena
-npm run test          # node --test test/api.test.js (49+ API tests)
+npm run test          # vitest run (3 test suites: api, adapter-routing, worker-manager)
+npm run test:watch    # vitest (watch mode)
+npm run test:coverage # vitest run --coverage (v8 provider, thresholds on worker-manager.js)
+npm run lint          # eslint server.js worker-manager.js adapters/ test/
 ```
 
 ## Deployment
 
 - **URL**: https://assetgen.korczewski.de
-- **Deploy**: `./k8s/scripts/deploy/deploy-assetgenerator.sh` (builds server + gpu-waker images)
+- **Namespace**: `assetgen`
+- **Manifests**: `k3d/` directory (kustomize — `kubectl apply -k k3d/`)
 - **Resources**: 100m-500m CPU, 256Mi-512Mi memory
 - **Storage**: SMB-CSI PVs for audio (10Gi) and visual (50Gi) libraries
+- **Image**: `registry.localhost:5000/assetgenerator:latest`
 
 ## Monitoring
 

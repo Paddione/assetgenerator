@@ -7,3 +7,5 @@ resources:
   - secrets.yaml
   - deployment.yaml
   - ingress.yaml
+  - gpu-waker.yaml
+  - keda-gpu-waker.yaml

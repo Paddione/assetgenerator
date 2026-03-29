@@ -1,0 +1,60 @@
+# =============================================================================
+# GPU Waker — KEDA-managed pod that SSH-wakes the external GPU worker
+# =============================================================================
+# KEDA scales this Deployment 0→1 when assetgenerator queue-depth > 0.
+# The pod SSHs to the GPU machine and starts the gpu-worker systemd service,
+# then idles until KEDA scales it back to 0.
+#
+# Prerequisites:
+#   1. KEDA installed in cluster (helm install keda kedacore/keda -n keda-system)
+#   2. SSH key created and stored in gpu-waker-ssh secret (see below)
+#
+# To create the SSH secret:
+#   kubectl -n assetgen create secret generic gpu-waker-ssh \
+#     --from-file=id_ed25519=$HOME/.ssh/id_ed25519
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-waker
+  labels:
+    app: gpu-waker
+spec:
+  replicas: 0          # KEDA manages replica count
+  selector:
+    matchLabels:
+      app: gpu-waker
+  template:
+    metadata:
+      labels:
+        app: gpu-waker
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: gpu-waker
+          image: registry.localhost:5000/gpu-waker:latest
+          env:
+            - name: GPU_HOST
+              value: "host.k3d.internal"
+            - name: GPU_SSH_PORT
+              value: "2222"
+            - name: GPU_SSH_USER
+              value: "patrick"
+            - name: ASSETGEN_URL
+              value: "http://assetgenerator.assetgen.svc:5200"
+          volumeMounts:
+            - name: ssh-key
+              mountPath: /ssh
+              readOnly: true
+          resources:
+            requests:
+              memory: 16Mi
+              cpu: 10m
+            limits:
+              memory: 32Mi
+              cpu: 50m
+      volumes:
+        - name: ssh-key
+          secret:
+            secretName: gpu-waker-ssh
+            defaultMode: 0400

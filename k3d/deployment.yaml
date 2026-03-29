@@ -96,9 +96,11 @@ kind: Service
 metadata:
   name: assetgenerator
 spec:
+  type: NodePort
   selector:
     app: assetgenerator
   ports:
     - name: http
       port: 5200
       targetPort: 5200
+      nodePort: 30080

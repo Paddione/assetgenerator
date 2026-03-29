@@ -729,6 +729,181 @@
     .phase-actions button.btn-accept { background: var(--green); color: var(--bg-deep); }
     .phase-actions button.btn-accept:hover { background: #6dff9a; }
 
+    /* Search bar */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1.5rem;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-bar input {
+      flex: 1;
+      max-width: 400px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .search-bar .search-count {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    /* Multi-select */
+    .bulk-bar {
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1.5rem;
+      background: #1a0a0a;
+      border-bottom: 1px solid var(--red);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--red);
+    }
+
+    .bulk-bar.active { display: flex; }
+
+    .bulk-bar .bulk-count { color: var(--text); margin-right: auto; }
+
+    .card-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--cyan);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Inline pipeline (all results visible) */
+    .pipeline-inline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .pipeline-inline .phase-col {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.5rem;
+      min-height: 80px;
+    }
+
+    .pipeline-inline .phase-col.done { border-color: #00ff8844; }
+    .pipeline-inline .phase-col.pending { opacity: 0.5; }
+    .pipeline-inline .phase-col.error { border-color: var(--red); }
+    .pipeline-inline .phase-col.generating { border-color: var(--cyan); }
+
+    .phase-col .phase-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .phase-col .phase-title .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
+
+    .phase-col.done .phase-title .status-dot { background: var(--green); }
+    .phase-col.error .phase-title .status-dot { background: var(--red); }
+    .phase-col.generating .phase-title .status-dot { background: var(--cyan); animation: pulse-dot 1s infinite; }
+
+    @keyframes pulse-dot { 50% { opacity: 0.3; } }
+
+    .phase-col .phase-thumb {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 3px;
+      background: var(--bg-card);
+      cursor: pointer;
+    }
+
+    .phase-col .phase-thumb:hover { border: 1px solid var(--cyan); }
+
+    .phase-col .model-thumb-container {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg-card);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .phase-col .model-thumb-container:hover { border: 1px solid var(--cyan); }
+
+    .phase-col .render-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .phase-col .render-mini-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: var(--bg-card);
+      border-radius: 2px;
+    }
+
+    .phase-col .phase-btn {
+      margin-top: 0.4rem;
+      width: 100%;
+      font-size: 0.7rem;
+      padding: 0.3rem;
+    }
+
+    .phase-col .phase-meta {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Checkout badge */
+    .checkout-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      background: #ff6b3522;
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .card.checked-out {
+      border-color: var(--orange);
+      box-shadow: inset 0 0 0 1px var(--orange-dim);
+    }
+
+    /* Compact card header with checkbox */
+    .card-header-with-check {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
     .add-visual-form {
       display: flex;
       flex-wrap: wrap;
@@ -1029,6 +1204,18 @@
   </div>
 
   <div id="audio-container" style="padding:1rem 1.5rem 6rem;max-width:1100px;margin:0 auto;"></div>
+  <div id="visual-search-bar" class="search-bar" style="display:none;">
+    <input type="text" id="visual-search" placeholder="Search by name or ID..." autocomplete="off">
+    <span id="visual-search-count" class="search-count"></span>
+    <label style="display:flex;align-items:center;gap:0.3rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);cursor:pointer;">
+      <input type="checkbox" id="visual-select-all" class="card-checkbox"> Select All
+    </label>
+  </div>
+  <div id="visual-bulk-bar" class="bulk-bar">
+    <span class="bulk-count" id="bulk-count">0 selected</span>
+    <button class="btn-danger" id="bulk-delete-btn">Delete Selected</button>
+    <button id="bulk-cancel-btn">Cancel</button>
+  </div>
   <div id="visual-container" style="padding:1rem 1.5rem 6rem;max-width:1100px;margin:0 auto;display:none;"></div>
 
   <div id="regen-log" class="log-panel collapsed" hidden>
@@ -2662,39 +2849,65 @@ function createVisualSlotRow(slot, allAssets, projectName) {
   return row;
 }
 
-function renderVisualLibraryView() {
-  const container = document.getElementById('visual-container');
-  container.replaceChildren();
+// Track selected assets and checked-out assets
+const selectedAssets = new Set();
+const checkedOutAssets = new Set();
+try { JSON.parse(sessionStorage.getItem('checkedOut') || '[]').forEach(id => checkedOutAssets.add(id)); } catch {}
 
-  // Add to Library form
-  const addHeader = document.createElement('h2');
-  addHeader.className = 'section-header';
-  addHeader.textContent = 'Add Visual Asset';
-  container.appendChild(addHeader);
+function updateBulkBar() {
+  const bar = document.getElementById('visual-bulk-bar');
+  const count = selectedAssets.size;
+  document.getElementById('bulk-count').textContent = count + ' selected';
+  bar.classList.toggle('active', count > 0);
+}
 
+function buildAddForm() {
   const addForm = document.createElement('div');
   addForm.className = 'add-visual-form';
-
   const categories = ['characters', 'weapons', 'items', 'tiles', 'cover', 'ui'];
-  addForm.innerHTML = `
-    <label>ID<input type="text" id="new-vis-id" placeholder="e.g. dragon"></label>
-    <label>Name<input type="text" id="new-vis-name" placeholder="e.g. Fire Dragon"></label>
-    <label>Category
-      <select id="new-vis-category">
-        ${categories.map(c => `<option value="${c}">${c}</option>`).join('')}
-      </select>
-    </label>
-    <label>Concept Backend
-      <select id="new-vis-backend">
-        <option value="siliconflow">SiliconFlow / Flux (cloud API)</option>
-        <option value="gemini-imagen">Gemini Imagen (cloud API)</option>
-        <option value="diffusers">Juggernaut XL (local GPU)</option>
-        <option value="">ComfyUI (local GPU)</option>
-      </select>
-    </label>
-    <label>Prompt<textarea id="new-vis-prompt" rows="2" placeholder="Describe the asset..."></textarea></label>
-  `;
-
+  // Build form with DOM methods
+  const fields = [
+    { label: 'ID', tag: 'input', id: 'new-vis-id', placeholder: 'e.g. dragon' },
+    { label: 'Name', tag: 'input', id: 'new-vis-name', placeholder: 'e.g. Fire Dragon' },
+  ];
+  for (const f of fields) {
+    const lbl = document.createElement('label');
+    lbl.textContent = f.label;
+    const inp = document.createElement(f.tag);
+    inp.type = 'text'; inp.id = f.id; inp.placeholder = f.placeholder;
+    lbl.appendChild(inp);
+    addForm.appendChild(lbl);
+  }
+  // Category select
+  const catLbl = document.createElement('label');
+  catLbl.textContent = 'Category';
+  const catSel = document.createElement('select');
+  catSel.id = 'new-vis-category';
+  for (const c of categories) {
+    const o = document.createElement('option'); o.value = c; o.textContent = c;
+    catSel.appendChild(o);
+  }
+  catLbl.appendChild(catSel);
+  addForm.appendChild(catLbl);
+  // Concept backend
+  const cbLbl = document.createElement('label');
+  cbLbl.textContent = 'Concept Backend';
+  const cbSel = document.createElement('select');
+  cbSel.id = 'new-vis-backend';
+  for (const [v, l] of [['siliconflow','SiliconFlow / Flux (cloud API)'],['gemini-imagen','Gemini Imagen (cloud API)'],['diffusers','Juggernaut XL (local GPU)'],['','ComfyUI (local GPU)']]) {
+    const o = document.createElement('option'); o.value = v; o.textContent = l;
+    cbSel.appendChild(o);
+  }
+  cbLbl.appendChild(cbSel);
+  addForm.appendChild(cbLbl);
+  // Prompt
+  const pLbl = document.createElement('label');
+  pLbl.textContent = 'Prompt';
+  const pTa = document.createElement('textarea');
+  pTa.id = 'new-vis-prompt'; pTa.rows = 2; pTa.placeholder = 'Describe the asset...';
+  pLbl.appendChild(pTa);
+  addForm.appendChild(pLbl);
+  // Add button
   const addBtn = document.createElement('button');
   addBtn.className = 'btn-primary';
   addBtn.textContent = 'Add Asset';
@@ -2704,10 +2917,7 @@ function renderVisualLibraryView() {
     const newCat = document.getElementById('new-vis-category').value;
     const newBackend = document.getElementById('new-vis-backend').value || null;
     const newPrompt = document.getElementById('new-vis-prompt').value.trim();
-    if (!newId || !newName) {
-      alert('ID and name are required');
-      return;
-    }
+    if (!newId || !newName) { alert('ID and name are required'); return; }
     try {
       await fetchJSON('/api/visual-library', {
         method: 'POST',
@@ -2719,15 +2929,26 @@ function renderVisualLibraryView() {
       document.getElementById('new-vis-name').value = '';
       document.getElementById('new-vis-prompt').value = '';
       renderVisualAssets();
-      appendLog(`Added visual asset: ${newId}`, 'success');
-    } catch (err) {
-      appendLog(err.message, 'error');
-    }
+      appendLog('Added visual asset: ' + newId, 'success');
+    } catch (err) { appendLog(err.message, 'error'); }
   });
   addForm.appendChild(addBtn);
-  container.appendChild(addForm);
+  return addForm;
+}
 
-  // Asset list
+function renderVisualLibraryView() {
+  const container = document.getElementById('visual-container');
+  container.replaceChildren();
+
+  const searchQuery = (document.getElementById('visual-search')?.value || '').toLowerCase().trim();
+
+  // Add to Library form
+  const addHeader = document.createElement('h2');
+  addHeader.className = 'section-header';
+  addHeader.textContent = 'Add Visual Asset';
+  container.appendChild(addHeader);
+  container.appendChild(buildAddForm());
+
   if (!visualData?.assets || Object.keys(visualData.assets).length === 0) {
     const empty = document.createElement('div');
     empty.className = 'empty-state';
@@ -2736,32 +2957,62 @@ function renderVisualLibraryView() {
     return;
   }
 
+  // Filter by search query
+  const allEntries = Object.entries(visualData.assets);
+  const filtered = searchQuery
+    ? allEntries.filter(([id, a]) => id.toLowerCase().includes(searchQuery) || (a.name || '').toLowerCase().includes(searchQuery) || (a.prompt || '').toLowerCase().includes(searchQuery))
+    : allEntries;
+
+  const countEl = document.getElementById('visual-search-count');
+  if (countEl) countEl.textContent = searchQuery ? (filtered.length + ' / ' + allEntries.length) : (allEntries.length + ' assets');
+
   const byCategory = {};
-  for (const [id, asset] of Object.entries(visualData.assets)) {
+  for (const [id, asset] of filtered) {
     if (!byCategory[asset.category]) byCategory[asset.category] = [];
     byCategory[asset.category].push([id, asset]);
+  }
+
+  if (filtered.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.textContent = searchQuery ? ('No assets matching "' + searchQuery + '"') : 'No visual assets yet.';
+    container.appendChild(empty);
+    return;
   }
 
   for (const [category, assets] of Object.entries(byCategory)) {
     const header = document.createElement('h2');
     header.className = 'section-header';
-    header.textContent = `${category} \u2014 ${assets.length} assets`;
+    header.textContent = category + ' \u2014 ' + assets.length + ' assets';
     container.appendChild(header);
 
     for (const [id, asset] of assets) {
       container.appendChild(createVisualCard(id, asset));
     }
   }
+
+  updateBulkBar();
 }
 
 function createVisualCard(id, asset) {
   const card = document.createElement('div');
-  card.className = 'card';
-  card.id = `vcard-${id}`;
+  card.className = 'card' + (checkedOutAssets.has(id) ? ' checked-out' : '');
+  card.id = 'vcard-' + id;
 
-  // Header
+  // Header with checkbox
   const headerRow = document.createElement('div');
-  headerRow.className = 'card-header';
+  headerRow.className = 'card-header-with-check';
+
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.className = 'card-checkbox';
+  checkbox.checked = selectedAssets.has(id);
+  checkbox.addEventListener('change', () => {
+    if (checkbox.checked) selectedAssets.add(id); else selectedAssets.delete(id);
+    updateBulkBar();
+  });
+  headerRow.appendChild(checkbox);
+
   const nameEl = document.createElement('span');
   nameEl.className = 'sound-name';
   nameEl.textContent = asset.name || id;
@@ -2778,6 +3029,13 @@ function createVisualCard(id, asset) {
     tagEl.textContent = tag;
     headerRow.appendChild(tagEl);
   }
+
+  if (checkedOutAssets.has(id)) {
+    const coBadge = document.createElement('span');
+    coBadge.className = 'checkout-badge';
+    coBadge.textContent = 'checked out';
+    headerRow.appendChild(coBadge);
+  }
   card.appendChild(headerRow);
 
   // Controls (prompt, backend, poses)
@@ -2789,7 +3047,7 @@ function createVisualCard(id, asset) {
   const promptInput = document.createElement('textarea');
   promptInput.rows = 2;
   promptInput.value = asset.prompt || '';
-  promptInput.id = `vprompt-${id}`;
+  promptInput.id = 'vprompt-' + id;
   controls.appendChild(promptLabel);
   controls.appendChild(promptInput);
 
@@ -2798,7 +3056,7 @@ function createVisualCard(id, asset) {
   const cbLabel = document.createElement('label');
   cbLabel.textContent = 'Concept Backend';
   const cbSelect = document.createElement('select');
-  cbSelect.id = `vcb-${id}`;
+  cbSelect.id = 'vcb-' + id;
   cbSelect.style.width = '200px';
   const conceptBackends = [
     { value: 'siliconflow', label: 'SiliconFlow / Flux (cloud API)' },
@@ -2816,11 +3074,10 @@ function createVisualCard(id, asset) {
   cbLabel.appendChild(cbSelect);
   cbRow.appendChild(cbLabel);
 
-  // Model backend selector
   const mbLabel = document.createElement('label');
   mbLabel.textContent = 'Model Backend';
   const mbSelect = document.createElement('select');
-  mbSelect.id = `vmb-${id}`;
+  mbSelect.id = 'vmb-' + id;
   mbSelect.style.width = '200px';
   const modelBackends = [
     { value: '', label: 'Auto (fallback chain)' },
@@ -2846,229 +3103,253 @@ function createVisualCard(id, asset) {
   posesLabel.textContent = 'Poses';
   const posesInput = document.createElement('input');
   posesInput.value = (asset.poses || []).join(', ');
-  posesInput.id = `vposes-${id}`;
+  posesInput.id = 'vposes-' + id;
   posesInput.style.width = '200px';
   posesLabel.appendChild(posesInput);
   cbRow.appendChild(posesLabel);
   controls.appendChild(cbRow);
 
-  const saveBtn = document.createElement('button');
-  saveBtn.textContent = 'Save';
-  saveBtn.style.marginTop = '0.3rem';
-  saveBtn.addEventListener('click', async () => {
-    await fetchJSON(`/api/visual-library/${id}`, {
+  const saveSettingsBtn = document.createElement('button');
+  saveSettingsBtn.textContent = 'Save';
+  saveSettingsBtn.style.marginTop = '0.3rem';
+  saveSettingsBtn.addEventListener('click', async () => {
+    await fetchJSON('/api/visual-library/' + id, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        prompt: document.getElementById(`vprompt-${id}`).value,
-        poses: document.getElementById(`vposes-${id}`).value.split(',').map(s => s.trim()).filter(Boolean),
-        conceptBackend: document.getElementById(`vcb-${id}`).value || null,
-        modelBackend: document.getElementById(`vmb-${id}`).value || null,
+        prompt: document.getElementById('vprompt-' + id).value,
+        poses: document.getElementById('vposes-' + id).value.split(',').map(s => s.trim()).filter(Boolean),
+        conceptBackend: document.getElementById('vcb-' + id).value || null,
+        modelBackend: document.getElementById('vmb-' + id).value || null,
       }),
     });
     card.classList.add('save-flash');
     setTimeout(() => card.classList.remove('save-flash'), 600);
   });
-  controls.appendChild(saveBtn);
+  controls.appendChild(saveSettingsBtn);
   card.appendChild(controls);
 
-  // Step-by-step pipeline with previews
-  const pipelineSection = document.createElement('div');
-  pipelineSection.className = 'pipeline-steps';
+  // ====== INLINE PIPELINE: show all phases side by side ======
+  const pipelineInline = document.createElement('div');
+  pipelineInline.className = 'pipeline-inline';
 
   const phases = ['concept', 'model', 'render', 'pack'];
   for (const phase of phases) {
     const phaseData = asset.pipeline?.[phase];
-    if (!phaseData && phase === 'model') continue; // skip model for non-3D
+    if (!phaseData && phase === 'model') continue;
 
     const status = phaseData?.status || 'pending';
-    const phaseDiv = document.createElement('div');
-    phaseDiv.className = `phase-preview ${status}`;
+    const col = document.createElement('div');
+    col.className = 'phase-col ' + status;
 
-    // Phase header with status + action button
-    const phaseHeader = document.createElement('div');
-    phaseHeader.className = 'phase-preview-header';
+    // Title row
+    const title = document.createElement('div');
+    title.className = 'phase-title';
+    title.textContent = phase.toUpperCase();
+    const dot = document.createElement('span');
+    dot.className = 'status-dot';
+    title.appendChild(dot);
+    col.appendChild(title);
 
-    const statusIcons = { done: '\u2714', pending: '\u25CB', generating: '\u25D0', error: '\u2717' };
-    const phaseLabel = document.createElement('span');
-    phaseLabel.className = 'phase-label';
-    phaseLabel.textContent = phase;
-    phaseHeader.appendChild(phaseLabel);
-
-    const statusEl = document.createElement('span');
-    statusEl.className = `phase-status ${status}`;
-    statusEl.textContent = `${statusIcons[status] || '\u25CB'} ${status}`;
-    if (phaseData?.generatedAt) statusEl.textContent += ` \u2014 ${timeAgo(phaseData.generatedAt)}`;
-    if (phaseData?.backend) statusEl.textContent += ` (${phaseData.backend})`;
-    phaseHeader.appendChild(statusEl);
-
-    phaseDiv.appendChild(phaseHeader);
-
-    // Preview content (different per phase)
+    // Preview content per phase (always visible when done)
     if (status === 'done') {
       if (phase === 'concept') {
         const img = document.createElement('img');
-        img.className = 'preview-full';
-        img.src = `/api/visual-library/${id}/concept?t=${Date.now()}`;
+        img.className = 'phase-thumb';
+        img.src = '/api/visual-library/' + id + '/concept?t=' + Date.now();
         img.alt = 'Concept';
-        img.title = 'Click to open full size';
         img.addEventListener('click', () => window.open(img.src, '_blank'));
-        phaseDiv.appendChild(img);
+        col.appendChild(img);
       }
 
       if (phase === 'model') {
-        const viewBtn = document.createElement('button');
-        viewBtn.className = 'btn-view3d';
-        viewBtn.textContent = '\u25B6 View 3D';
-        viewBtn.addEventListener('click', () => window.ModelViewer.open(id, asset.name || id));
-        phaseDiv.appendChild(viewBtn);
-
-        // "Use as Concept" button — renders front view and saves as concept
-        const snapBtn = document.createElement('button');
-        snapBtn.className = 'btn-view3d';
-        snapBtn.textContent = '\uD83D\uDCF7 Use as Concept';
-        snapBtn.title = 'Render front view of 3D model and save as concept art';
-        snapBtn.addEventListener('click', () => captureModelAsConcept(id, asset));
-        phaseDiv.appendChild(snapBtn);
-
-        // Show source info if sourced from Sketchfab
+        const modelBox = document.createElement('div');
+        modelBox.className = 'model-thumb-container';
+        modelBox.textContent = '\u25B6 3D';
+        modelBox.style.cssText = 'font-family:var(--font-mono);font-size:1.5rem;color:var(--cyan);';
+        modelBox.title = 'Click to open 3D viewer';
+        modelBox.addEventListener('click', () => window.ModelViewer.open(id, asset.name || id));
+        col.appendChild(modelBox);
         if (asset.sketchfabUid) {
-          const srcBadge = document.createElement('span');
-          srcBadge.className = 'source-badge';
-          srcBadge.textContent = '\uD83C\uDFA8 Sketchfab: ' + asset.sketchfabUid.slice(0, 8) + '...';
-          srcBadge.title = 'Sourced from Sketchfab UID: ' + asset.sketchfabUid;
-          phaseDiv.appendChild(srcBadge);
+          const meta = document.createElement('div');
+          meta.className = 'phase-meta';
+          meta.textContent = 'Sketchfab: ' + asset.sketchfabUid.slice(0, 8) + '...';
+          col.appendChild(meta);
         }
       }
 
       if (phase === 'render' && phaseData?.frameCount > 0) {
         const grid = document.createElement('div');
-        grid.className = 'render-grid';
-        grid.textContent = 'Loading frames...';
-        // Async load frame list
-        fetch(`/api/visual-library/${id}/renders`).then(r => r.json()).then(data => {
+        grid.className = 'render-mini-grid';
+        grid.textContent = '...';
+        fetch('/api/visual-library/' + id + '/renders').then(r => r.json()).then(data => {
           grid.textContent = '';
           if (data.frames?.length > 0) {
-            for (const frame of data.frames) {
+            for (const frame of data.frames.slice(0, 16)) {
               const img = document.createElement('img');
-              img.src = `/api/visual-library/${id}/render-frame/${frame}`;
+              img.src = '/api/visual-library/' + id + '/render-frame/' + frame;
               img.alt = frame;
               img.title = frame.replace('.png', '');
               grid.appendChild(img);
             }
-          } else {
-            grid.textContent = 'No rendered frames found';
+            if (data.frames.length > 16) {
+              const more = document.createElement('div');
+              more.className = 'phase-meta';
+              more.textContent = '+' + (data.frames.length - 16) + ' more';
+              grid.appendChild(more);
+            }
           }
-        }).catch(() => { grid.textContent = 'Failed to load frames'; });
-        phaseDiv.appendChild(grid);
+        }).catch(() => { grid.textContent = 'Error'; });
+        col.appendChild(grid);
       }
 
       if (phase === 'pack') {
         const img = document.createElement('img');
-        img.className = 'atlas-preview';
-        img.src = `/api/visual-library/${id}/atlas?t=${Date.now()}`;
-        img.alt = 'Sprite Atlas';
-        img.title = 'Packed sprite atlas';
+        img.className = 'phase-thumb';
+        img.src = '/api/visual-library/' + id + '/atlas?t=' + Date.now();
+        img.alt = 'Atlas';
         img.onerror = () => { img.style.display = 'none'; };
-        phaseDiv.appendChild(img);
+        img.addEventListener('click', () => window.open(img.src, '_blank'));
+        col.appendChild(img);
       }
     }
 
-    // Phase action buttons
-    const phaseActions = document.createElement('div');
-    phaseActions.className = 'phase-actions';
+    // Meta info
+    if (phaseData?.backend) {
+      const meta = document.createElement('div');
+      meta.className = 'phase-meta';
+      meta.textContent = phaseData.backend + (phaseData.generatedAt ? ' \u2022 ' + timeAgo(phaseData.generatedAt) : '');
+      col.appendChild(meta);
+    }
 
-    // Determine if this phase can run (previous phase must be done)
+    // Phase action button
     const prevPhase = phases[phases.indexOf(phase) - 1];
     const isExternallySourced = asset.sketchfabUid || asset.modelBackend === 'sketchfab';
     const prevDone = !prevPhase || asset.pipeline?.[prevPhase]?.status === 'done'
-      || (prevPhase === 'model' && !asset.pipeline?.model) // skip model check for non-3D
-      || (prevPhase === 'concept' && phase === 'model' && isExternallySourced); // Sketchfab doesn't need concept
+      || (prevPhase === 'model' && !asset.pipeline?.model)
+      || (prevPhase === 'concept' && phase === 'model' && isExternallySourced);
     const canRun = prevDone && status !== 'generating';
 
-    if (status === 'done') {
-      // Regenerate button
-      const regenBtn = document.createElement('button');
-      regenBtn.textContent = '\u21BB Redo';
-      regenBtn.disabled = !canRun;
-      regenBtn.addEventListener('click', () => startVisualGeneration(id, phase));
-      phaseActions.appendChild(regenBtn);
-    } else {
-      // Generate button
-      const genBtn = document.createElement('button');
-      genBtn.className = canRun ? 'btn-primary' : '';
-      genBtn.textContent = `Generate ${phase.charAt(0).toUpperCase() + phase.slice(1)}`;
-      genBtn.disabled = !canRun;
-      genBtn.addEventListener('click', () => startVisualGeneration(id, phase));
-      phaseActions.appendChild(genBtn);
-    }
+    const btn = document.createElement('button');
+    btn.className = 'phase-btn' + (status !== 'done' && canRun ? ' btn-primary' : '');
+    btn.textContent = status === 'done' ? '\u21BB Redo' : 'Generate';
+    btn.disabled = !canRun;
+    btn.addEventListener('click', () => startVisualGeneration(id, phase));
+    col.appendChild(btn);
 
-    // Sketchfab search button for model phase
     if (phase === 'model') {
       const sfBtn = document.createElement('button');
+      sfBtn.className = 'phase-btn';
       sfBtn.textContent = '\uD83D\uDD0D Sketchfab';
-      sfBtn.title = 'Search Sketchfab for a 3D model';
       sfBtn.addEventListener('click', () => openSketchfabSearch(id, asset.name || id));
-      phaseActions.appendChild(sfBtn);
+      col.appendChild(sfBtn);
     }
 
-    phaseDiv.appendChild(phaseActions);
-    pipelineSection.appendChild(phaseDiv);
+    pipelineInline.appendChild(col);
   }
-
-  card.appendChild(pipelineSection);
+  card.appendChild(pipelineInline);
 
   // Assignment info
   if (asset.assignedTo && Object.keys(asset.assignedTo).length > 0) {
     const assignInfo = document.createElement('div');
     assignInfo.className = 'assign-info';
     assignInfo.textContent = 'Assigned: ' + Object.entries(asset.assignedTo)
-      .map(([proj, info]) => `${proj}/${info.atlas} (synced ${timeAgo(info.syncedAt)})`)
+      .map(([proj, info]) => proj + '/' + info.atlas + ' (synced ' + timeAgo(info.syncedAt) + ')')
       .join(', ');
     card.appendChild(assignInfo);
   }
 
-  // Bottom actions
+  // Bottom actions: checkout / save / discard / full pipeline / assign / delete
   const actions = document.createElement('div');
   actions.className = 'card-actions';
 
-  const fullBtn = document.createElement('button');
-  fullBtn.className = 'btn-primary';
-  fullBtn.textContent = 'Full Pipeline';
-  fullBtn.addEventListener('click', () => startVisualGeneration(id, 'full'));
-  actions.appendChild(fullBtn);
-
-  const assignBtn = document.createElement('button');
-  assignBtn.textContent = 'Assign';
-  if (currentProject === '__library__') {
-    assignBtn.disabled = true;
-    assignBtn.title = 'Select a project first';
-  }
-  assignBtn.addEventListener('click', async () => {
-    if (currentProject === '__library__') {
-      appendLog('Select a project to assign assets', 'warn');
-      return;
-    }
-    await fetchJSON(`/api/visual-library/${id}/assign`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ project: currentProject, atlas: asset.category }),
+  if (checkedOutAssets.has(id)) {
+    // Checked out: show Save to Library and Discard
+    const saveLibBtn = document.createElement('button');
+    saveLibBtn.className = 'btn-primary';
+    saveLibBtn.textContent = 'Save to Library';
+    saveLibBtn.title = 'Check in: save changes and return to library';
+    saveLibBtn.addEventListener('click', async () => {
+      // Save current settings first
+      await fetchJSON('/api/visual-library/' + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: document.getElementById('vprompt-' + id).value,
+          poses: document.getElementById('vposes-' + id).value.split(',').map(s => s.trim()).filter(Boolean),
+          conceptBackend: document.getElementById('vcb-' + id).value || null,
+          modelBackend: document.getElementById('vmb-' + id).value || null,
+        }),
+      });
+      checkedOutAssets.delete(id);
+      sessionStorage.setItem('checkedOut', JSON.stringify([...checkedOutAssets]));
+      appendLog('Saved ' + id + ' to permanent library', 'success');
+      visualData = await fetchJSON('/api/visual-library');
+      renderVisualAssets();
     });
-    card.classList.add('save-flash');
-    setTimeout(() => card.classList.remove('save-flash'), 600);
-  });
-  actions.appendChild(assignBtn);
+    actions.appendChild(saveLibBtn);
 
-  const delBtn = document.createElement('button');
-  delBtn.className = 'btn-danger';
-  delBtn.textContent = 'Delete';
-  delBtn.addEventListener('click', async () => {
-    if (!confirm(`Delete ${id}?`)) return;
-    await fetchJSON(`/api/visual-library/${id}`, { method: 'DELETE' });
-    visualData = await fetchJSON('/api/visual-library');
-    renderVisualAssets();
-  });
-  actions.appendChild(delBtn);
+    const discardBtn = document.createElement('button');
+    discardBtn.className = 'btn-danger';
+    discardBtn.textContent = 'Discard';
+    discardBtn.title = 'Delete this asset entirely';
+    discardBtn.addEventListener('click', async () => {
+      if (!confirm('Delete ' + id + ' permanently?')) return;
+      await fetchJSON('/api/visual-library/' + id, { method: 'DELETE' });
+      checkedOutAssets.delete(id);
+      sessionStorage.setItem('checkedOut', JSON.stringify([...checkedOutAssets]));
+      visualData = await fetchJSON('/api/visual-library');
+      renderVisualAssets();
+    });
+    actions.appendChild(discardBtn);
+  } else {
+    // Not checked out: show Checkout, Full Pipeline, Assign, Delete
+    const checkoutBtn = document.createElement('button');
+    checkoutBtn.textContent = 'Checkout';
+    checkoutBtn.title = 'Check out for editing (marks as work-in-progress)';
+    checkoutBtn.addEventListener('click', () => {
+      checkedOutAssets.add(id);
+      sessionStorage.setItem('checkedOut', JSON.stringify([...checkedOutAssets]));
+      card.classList.add('checked-out');
+      renderVisualAssets();
+    });
+    actions.appendChild(checkoutBtn);
+
+    const fullBtn = document.createElement('button');
+    fullBtn.className = 'btn-primary';
+    fullBtn.textContent = 'Full Pipeline';
+    fullBtn.addEventListener('click', () => startVisualGeneration(id, 'full'));
+    actions.appendChild(fullBtn);
+
+    const assignBtn = document.createElement('button');
+    assignBtn.textContent = 'Assign';
+    if (currentProject === '__library__') {
+      assignBtn.disabled = true;
+      assignBtn.title = 'Select a project first';
+    }
+    assignBtn.addEventListener('click', async () => {
+      if (currentProject === '__library__') { appendLog('Select a project to assign assets', 'warn'); return; }
+      await fetchJSON('/api/visual-library/' + id + '/assign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ project: currentProject, atlas: asset.category }),
+      });
+      card.classList.add('save-flash');
+      setTimeout(() => card.classList.remove('save-flash'), 600);
+    });
+    actions.appendChild(assignBtn);
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'btn-danger';
+    delBtn.textContent = 'Delete';
+    delBtn.addEventListener('click', async () => {
+      if (!confirm('Delete ' + id + '?')) return;
+      await fetchJSON('/api/visual-library/' + id, { method: 'DELETE' });
+      visualData = await fetchJSON('/api/visual-library');
+      renderVisualAssets();
+    });
+    actions.appendChild(delBtn);
+  }
 
   card.appendChild(actions);
   return card;
@@ -3387,6 +3668,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     activeTab = btn.dataset.tab;
     document.getElementById('audio-container').style.display = activeTab === 'audio' ? '' : 'none';
     document.getElementById('visual-container').style.display = activeTab === 'visual' ? '' : 'none';
+    document.getElementById('visual-search-bar').style.display = activeTab === 'visual' ? '' : 'none';
     const isLibrary = currentProject === '__library__';
     document.getElementById('regen-btn').style.display = activeTab === 'audio' ? '' : 'none';
     document.getElementById('scan-btn').style.display = (activeTab === 'audio' && !isLibrary) ? '' : 'none';
@@ -3440,6 +3722,57 @@ async function pollWorkerStatus() {
 }
 pollWorkerStatus();
 setInterval(pollWorkerStatus, 5000);
+
+// Visual search filter
+let _searchDebounce = null;
+document.getElementById('visual-search').addEventListener('input', () => {
+  clearTimeout(_searchDebounce);
+  _searchDebounce = setTimeout(() => {
+    if (activeTab === 'visual') renderVisualAssets();
+  }, 200);
+});
+
+// Select All checkbox
+document.getElementById('visual-select-all').addEventListener('change', (e) => {
+  const allCheckboxes = document.querySelectorAll('#visual-container .card-checkbox');
+  selectedAssets.clear();
+  if (e.target.checked) {
+    allCheckboxes.forEach(cb => { cb.checked = true; const cardId = cb.closest('.card')?.id?.replace('vcard-', ''); if (cardId) selectedAssets.add(cardId); });
+  } else {
+    allCheckboxes.forEach(cb => { cb.checked = false; });
+  }
+  updateBulkBar();
+});
+
+// Bulk delete
+document.getElementById('bulk-delete-btn').addEventListener('click', async () => {
+  const count = selectedAssets.size;
+  if (count === 0) return;
+  if (!confirm('Delete ' + count + ' asset(s)? This cannot be undone.')) return;
+  const ids = [...selectedAssets];
+  for (const id of ids) {
+    try {
+      await fetchJSON('/api/visual-library/' + id, { method: 'DELETE' });
+      appendLog('Deleted ' + id, 'dim');
+    } catch (err) {
+      appendLog('Failed to delete ' + id + ': ' + err.message, 'error');
+    }
+  }
+  selectedAssets.clear();
+  document.getElementById('visual-select-all').checked = false;
+  updateBulkBar();
+  visualData = await fetchJSON('/api/visual-library');
+  renderVisualAssets();
+  appendLog('Bulk delete: ' + ids.length + ' assets removed', 'success');
+});
+
+// Bulk cancel
+document.getElementById('bulk-cancel-btn').addEventListener('click', () => {
+  selectedAssets.clear();
+  document.getElementById('visual-select-all').checked = false;
+  document.querySelectorAll('#visual-container .card-checkbox').forEach(cb => { cb.checked = false; });
+  updateBulkBar();
+});
 </script>
 
 <script type="module">
