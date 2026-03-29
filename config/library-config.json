@@ -1,0 +1,12 @@
+{
+  "libraryRoot": "/mnt/pve3a/audio-library",
+  "loudness": {
+    "sfx": -16,
+    "music": -20
+  },
+  "categories": {
+    "sfx": ["weapons", "footsteps", "impacts", "ui", "environment"],
+    "music": ["battle", "ambient", "stings"]
+  },
+  "defaultTags": ["arena"]
+}

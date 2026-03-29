@@ -1,0 +1,61 @@
+{
+  "libraryRoot": "/mnt/pve3a/visual-library",
+  "blenderPath": "blender",
+  "categories": {
+    "characters": {
+      "directions": 8,
+      "defaultPoses": ["stand", "walk", "gun", "machine", "reload", "hold", "silencer"],
+      "size": 64,
+      "conceptResolution": 1024,
+      "has3D": true
+    },
+    "weapons": {
+      "directions": 1,
+      "defaultPoses": ["idle"],
+      "size": 32,
+      "conceptResolution": 1024,
+      "has3D": true
+    },
+    "items": {
+      "directions": 1,
+      "defaultPoses": ["idle"],
+      "size": 32,
+      "conceptResolution": 1024,
+      "has3D": true
+    },
+    "tiles": {
+      "directions": 1,
+      "defaultPoses": ["idle"],
+      "size": 32,
+      "has3D": false,
+      "conceptResolution": 512
+    },
+    "cover": {
+      "directions": 1,
+      "defaultPoses": ["idle"],
+      "size": 32,
+      "conceptResolution": 1024,
+      "has3D": true
+    },
+    "ui": {
+      "directions": 1,
+      "defaultPoses": ["idle"],
+      "size": 16,
+      "has3D": false,
+      "conceptResolution": 512
+    }
+  },
+  "render": {
+    "engine": "EEVEE",
+    "resolution": 256,
+    "format": "PNG"
+  },
+  "atlas": {
+    "maxSize": 2048,
+    "padding": 2,
+    "powerOfTwo": true
+  },
+  "tags": ["arena"],
+  "conceptBackendPriority": ["comfyui", "gemini-imagen", "siliconflow", "diffusers"],
+  "modelBackendPriority": ["hunyuan3d-local", "triposr", "meshy", "hyper3d", "hunyuan3d"]
+}

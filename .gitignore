@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Generated/downloaded assets (regeneratable via adapters)
+output/
+generated/
+downloads/
+*.wav
+*.mp3
+*.ogg
+*.flac
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test artifacts
+coverage/
+test-results/
+test-artifacts/
+
+# Temp files
+tmp/
+temp/
+*.tmp
+*.bak

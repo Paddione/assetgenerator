@@ -1,0 +1,9 @@
+{
+  "name": "l2p",
+  "audioRoot": "../l2p/frontend/public/audio",
+  "outputRoot": "../l2p/frontend/public/audio",
+  "processScript": null,
+  "generateScript": null,
+  "manifestPath": null,
+  "sounds": {}
+}

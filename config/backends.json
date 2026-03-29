@@ -1,0 +1,47 @@
+{
+  "audiocraft": {
+    "label": "AudioCraft (Local GPU)",
+    "enabled": true,
+    "adapter": "audiocraft"
+  },
+  "elevenlabs": {
+    "label": "ElevenLabs (Cloud API)",
+    "enabled": true,
+    "adapter": "elevenlabs",
+    "requiresEnv": "ELEVENLABS_API_KEY"
+  },
+  "suno": {
+    "label": "Suno AI (Cloud API — Music)",
+    "enabled": true,
+    "adapter": "suno",
+    "requiresEnv": "SUNO_API_KEY"
+  },
+  "hyper3d": {
+    "label": "Hyper3D Rodin (Cloud API — 3D)",
+    "enabled": true,
+    "adapter": "hyper3d",
+    "requiresEnv": "HYPER3D_API_KEY"
+  },
+  "hunyuan3d-local": {
+    "label": "Hunyuan3D (Local GPU — Free)",
+    "enabled": true,
+    "adapter": "hunyuan3d-local"
+  },
+  "hunyuan3d": {
+    "label": "Hunyuan3D (Cloud API — fal.ai)",
+    "enabled": true,
+    "adapter": "hunyuan3d",
+    "requiresEnv": "HUNYUAN3D_API_KEY"
+  },
+  "sketchfab": {
+    "label": "Sketchfab (Cloud API — 3D Models)",
+    "enabled": true,
+    "adapter": "sketchfab",
+    "requiresEnv": "SKETCHFAB_API_KEY"
+  },
+  "polyhaven": {
+    "label": "PolyHaven (Free — Textures/HDRIs/Models)",
+    "enabled": true,
+    "adapter": "polyhaven"
+  }
+}

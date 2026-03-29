@@ -1,0 +1,2466 @@
+{
+  "version": 1,
+  "assets": {
+    "student": {
+      "id": "student",
+      "name": "Student",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, young university student character, casual hoodie and jeans, backpack, sneakers, determined expression, low-poly 3D model, isometric game sprite, bright cyan accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#00f2ff",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T00:41:59.522Z",
+          "path": "concepts/characters/student.png",
+          "backend": "gemini-imagen",
+          "promptHash": "b0a2292c3d76e047"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/student.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T00:55:04.022Z",
+          "backend": "blender",
+          "frameCount": 8
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T00:55:21.625Z",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {},
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "researcher": {
+      "id": "researcher",
+      "name": "Researcher",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, full-body male character, university researcher, lab coat over smart casual clothes, safety goggles on forehead, focused expression, low-poly 3D model, isometric game sprite, mint green accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#3eff8b",
+      "pipeline": {
+        "concept": {
+          "status": "pending"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/researcher.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending"
+        },
+        "pack": {
+          "status": "pending"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "characters",
+          "syncedAt": "2026-03-16T05:32:13.795Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "professor": {
+      "id": "professor",
+      "name": "Professor",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, senior university professor character, tweed jacket with elbow patches, bow tie, glasses, grey hair, authoritative stance, low-poly 3D model, isometric game sprite, vivid purple accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#bc13fe",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-18T19:19:51.742Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/characters/professor.png",
+          "promptHash": "74c668d53c293eaa"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/professor.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "frameCount": 8,
+          "generatedAt": "2026-03-21T15:00:00Z"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "characters",
+          "syncedAt": "2026-03-16T05:32:13.820Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "dean": {
+      "id": "dean",
+      "name": "Dean",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, full-body male character, university dean, formal dark tailored suit, gold tie pin, slicked-back silver hair, commanding posture, broad shoulders, gold accent details, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ffd700",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T22:51:27.603Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/characters/dean.png",
+          "promptHash": "bc1c762dad114810"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/dean.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T01:35:41.592050+00:00",
+          "backend": "blender",
+          "frameCount": 8
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T01:35:41.592050+00:00",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "characters",
+          "syncedAt": "2026-03-16T05:32:13.844Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "librarian": {
+      "id": "librarian",
+      "name": "Librarian",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, full-body male character, university librarian, cozy cardigan sweater over collared shirt, reading glasses on chain around neck, book tucked under arm, calm demeanor, coral pink accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ff6b9d",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-18T19:21:37.281Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/characters/librarian.png",
+          "promptHash": "e8feef4d7c41894e"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/librarian.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "frameCount": 8,
+          "generatedAt": "2026-03-21T15:00:00Z"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      },
+      "assignedTo": {},
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "projectile": {
+      "id": "projectile",
+      "name": "Projectile",
+      "category": "weapons",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered glowing energy projectile, sci-fi laser bolt, yellow-orange emissive glow, stylized game VFX, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#f39c12",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/weapons/projectile.png",
+          "generatedAt": "2026-03-15T04:40:18.448Z"
+        },
+        "model": {
+          "status": "done",
+          "path": "models/weapons/projectile.glb",
+          "generatedAt": "2026-03-15T04:40:18.550Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:18.565Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:18.589Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "weapons",
+          "syncedAt": "2026-03-15T04:40:18.589Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "melee_arc": {
+      "id": "melee_arc",
+      "name": "Melee Arc",
+      "category": "weapons",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered sword slash arc effect, energy trail with particle sparks, white-blue emissive glow, stylized game VFX, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 48,
+      "color": "#e67e22",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T05:30:22.666Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/weapons/melee_arc.png"
+        },
+        "model": {
+          "status": "done",
+          "path": "models/weapons/melee_arc.glb",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-21T15:00:00Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "weapons",
+          "syncedAt": "2026-03-15T04:40:18.668Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "muzzle_flash": {
+      "id": "muzzle_flash",
+      "name": "Muzzle Flash",
+      "category": "weapons",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered muzzle flash effect, bright yellow-white burst with volumetric sparks, stylized game VFX, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#f1c40f",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T21:58:07.710Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/weapons/muzzle_flash.png"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-16T01:35:41.592050+00:00",
+          "backend": "triposr",
+          "path": "models/weapons/muzzle_flash.glb"
+        },
+        "render": {
+          "status": "done",
+          "generatedAt": "2026-03-16T01:35:41.592050+00:00",
+          "backend": "blender",
+          "frameCount": 1
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:18.778Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "weapons",
+          "syncedAt": "2026-03-15T04:40:18.778Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "health_pack": {
+      "id": "health_pack",
+      "name": "Health Pack",
+      "category": "items",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered red health pack with glowing cross symbol, stylized game item, clean geometry, soft studio lighting, isometric view, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#e74c3c",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/items/health_pack.png",
+          "generatedAt": "2026-03-15T04:40:18.800Z",
+          "promptHash": "47c56660cd594178"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T03:39:03.808Z",
+          "backend": "sketchfab",
+          "path": "models/items/health_pack.glb",
+          "sourceUid": "f84d239f92364681b9ee901d517b90b8"
+        },
+        "render": {
+          "status": "pending",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:18.873Z"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T04:40:18.894Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "items",
+          "syncedAt": "2026-03-15T04:40:18.894Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "f84d239f92364681b9ee901d517b90b8",
+      "modelBackend": "sketchfab"
+    },
+    "armor_plate": {
+      "id": "armor_plate",
+      "name": "Armor Plate",
+      "category": "items",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered blue armor plate pickup with glowing shield icon, stylized game item, clean geometry, soft studio lighting, isometric view, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#3498db",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/items/armor_plate.png",
+          "generatedAt": "2026-03-15T04:40:18.914Z"
+        },
+        "model": {
+          "status": "done",
+          "path": "models/items/armor_plate.glb",
+          "generatedAt": "2026-03-15T04:40:18.950Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:18.960Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:18.989Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "items",
+          "syncedAt": "2026-03-15T04:40:18.989Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "machine_gun": {
+      "id": "machine_gun",
+      "name": "Machine Gun",
+      "category": "items",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered machine gun pickup, sci-fi automatic weapon with glowing ammo indicator, stylized game item, clean geometry, soft studio lighting, isometric view, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 64,
+      "color": "#7f8c8d",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T21:52:11.321Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/items/machine_gun.png",
+          "promptHash": "83064beee4acd94b"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T03:39:03.808Z",
+          "backend": "sketchfab",
+          "path": "models/items/machine_gun.glb",
+          "sourceUid": "fbdf159836224d67b193ca527d4f4333"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:52:15.773Z",
+          "backend": "blender",
+          "frameCount": 1
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:52:18.458Z",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "items",
+          "syncedAt": "2026-03-16T05:32:13.897Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "fbdf159836224d67b193ca527d4f4333",
+      "modelBackend": "sketchfab"
+    },
+    "floor_01": {
+      "id": "floor_01",
+      "name": "Floor 01",
+      "category": "tiles",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered dark stone floor tile, top-down view, PBR textured, seamless tileable, dark navy tone, no text, no numbers",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/tiles/floor_01.png",
+          "generatedAt": "2026-03-15T04:40:19.040Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.051Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.073Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "tiles",
+          "syncedAt": "2026-03-15T04:40:19.073Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "floor_02": {
+      "id": "floor_02",
+      "name": "Floor 02",
+      "category": "tiles",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered dark stone floor tile variant, top-down view, PBR textured, seamless tileable, slightly cracked surface, no text, no numbers",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/tiles/floor_02.png",
+          "generatedAt": "2026-03-15T04:40:19.090Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.103Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.130Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "tiles",
+          "syncedAt": "2026-03-15T04:40:19.130Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "floor_03": {
+      "id": "floor_03",
+      "name": "Floor 03",
+      "category": "tiles",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered dark stone floor tile variant, top-down view, PBR textured, seamless tileable, moss patches, no text, no numbers",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/tiles/floor_03.png",
+          "generatedAt": "2026-03-15T04:40:19.145Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.157Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.185Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "tiles",
+          "syncedAt": "2026-03-15T04:40:19.185Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "floor_04": {
+      "id": "floor_04",
+      "name": "Floor 04",
+      "category": "tiles",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered dark stone floor tile variant, top-down view, PBR textured, seamless tileable, worn edges, no text, no numbers",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/tiles/floor_04.png",
+          "generatedAt": "2026-03-15T04:40:19.198Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.209Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.237Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "tiles",
+          "syncedAt": "2026-03-15T04:40:19.237Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "wall": {
+      "id": "wall",
+      "name": "Wall",
+      "category": "tiles",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered stone wall tile, top-down view, PBR textured, dark gray, rough hewn blocks with depth, no text, no numbers",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/tiles/wall.png",
+          "generatedAt": "2026-03-15T04:40:19.251Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.265Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.290Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "tiles",
+          "syncedAt": "2026-03-15T04:40:19.290Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "boundary": {
+      "id": "boundary",
+      "name": "Boundary",
+      "category": "tiles",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered boundary wall edge tile, top-down view, PBR textured, dark surface with glowing blue emissive border, no text, no numbers",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/tiles/boundary.png",
+          "generatedAt": "2026-03-15T04:40:19.304Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.316Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.343Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "tiles",
+          "syncedAt": "2026-03-15T04:40:19.343Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "zone_overlay": {
+      "id": "zone_overlay",
+      "name": "Zone Overlay",
+      "category": "tiles",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "danger zone overlay tile, translucent red tint, subtle hazard pattern, top-down, no text, no numbers",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T02:04:29.220Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/tiles/zone_overlay.png"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-21T15:00:00Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "tiles",
+          "syncedAt": "2026-03-16T05:32:13.921Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "building": {
+      "id": "building",
+      "name": "Building",
+      "category": "cover",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered campus building wall section, isometric view, brick facade with PBR materials, academic architecture, clean geometry, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#9b7cb8",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T21:52:30.189Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/cover/building.png",
+          "promptHash": "4f33ea0c4116a943"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T03:39:03.808Z",
+          "backend": "sketchfab",
+          "path": "models/cover/building.glb",
+          "sourceUid": "3b3d6a173d3649c58fe13d58b3dcba52"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:53:08.283Z",
+          "backend": "blender",
+          "frameCount": 1
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:53:10.855Z",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "cover",
+          "syncedAt": "2026-03-16T05:32:13.945Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "3b3d6a173d3649c58fe13d58b3dcba52",
+      "modelBackend": "sketchfab"
+    },
+    "bench": {
+      "id": "bench",
+      "name": "Bench",
+      "category": "cover",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered park bench, isometric view, wooden slats with PBR wood material, campus outdoor seating, clean geometry, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#c4a265",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T21:53:18.911Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/cover/bench.png",
+          "promptHash": "4585882bb26befaf"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T03:39:03.808Z",
+          "backend": "sketchfab",
+          "path": "models/cover/bench.glb",
+          "sourceUid": "4408281074eb4c30afafd96c7c421193"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:53:47.836Z",
+          "backend": "blender",
+          "frameCount": 1
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:53:50.265Z",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "cover",
+          "syncedAt": "2026-03-16T05:32:13.971Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "4408281074eb4c30afafd96c7c421193",
+      "modelBackend": "sketchfab"
+    },
+    "fountain": {
+      "id": "fountain",
+      "name": "Fountain",
+      "category": "cover",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered stone fountain, isometric view, circular base with water effect, campus courtyard centerpiece, clean geometry, PBR materials, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#7ec8d6",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T21:53:58.298Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/cover/fountain.png",
+          "promptHash": "ce58082ad0b75252"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T03:39:03.808Z",
+          "backend": "sketchfab",
+          "path": "models/cover/fountain.glb",
+          "sourceUid": "959f5011bcdd4a8c8700d6830824d1e1"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:54:02.506Z",
+          "backend": "blender",
+          "frameCount": 1
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:54:04.968Z",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "cover",
+          "syncedAt": "2026-03-16T05:32:13.998Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "959f5011bcdd4a8c8700d6830824d1e1",
+      "modelBackend": "sketchfab"
+    },
+    "hedge": {
+      "id": "hedge",
+      "name": "Hedge",
+      "category": "cover",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered trimmed hedge, isometric view, dark green foliage with volumetric depth, campus garden border, clean geometry, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#5cb85c",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T21:54:18.673Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/cover/hedge.png",
+          "promptHash": "ef7048fee9c651ea"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T03:39:03.808Z",
+          "backend": "sketchfab",
+          "path": "models/cover/hedge.glb",
+          "sourceUid": "d4ec3f99c6274465ab32f87ac05458e7"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:54:47.699Z",
+          "backend": "blender",
+          "frameCount": 1
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:54:50.218Z",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "cover",
+          "syncedAt": "2026-03-16T05:32:14.023Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "d4ec3f99c6274465ab32f87ac05458e7",
+      "modelBackend": "sketchfab"
+    },
+    "pond": {
+      "id": "pond",
+      "name": "Pond",
+      "category": "cover",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "3D rendered ornamental pond, isometric view, blue reflective water surface with caustics, campus water feature, clean geometry, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 32,
+      "color": "#4aa3c2",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-15T21:55:06.719Z",
+          "backend": "gemini-imagen",
+          "path": "concepts/cover/pond.png",
+          "promptHash": "c79f08924aab055a"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T03:39:03.808Z",
+          "backend": "sketchfab",
+          "path": "models/cover/pond.glb",
+          "sourceUid": "f3471d6d2e4447fc8b5cf837c963c1de"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:55:56.680Z",
+          "backend": "blender",
+          "frameCount": 1
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-15T21:55:59.206Z",
+          "backend": "packer"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "cover",
+          "syncedAt": "2026-03-16T05:32:14.049Z"
+        }
+      },
+      "conceptBackend": "comfyui",
+      "sketchfabUid": "f3471d6d2e4447fc8b5cf837c963c1de",
+      "modelBackend": "sketchfab"
+    },
+    "heart_full": {
+      "id": "heart_full",
+      "name": "Heart Full",
+      "category": "ui",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "stylized 3D red heart icon, full health indicator, glossy surface, soft glow, game UI, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 16,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/ui/heart_full.png",
+          "generatedAt": "2026-03-15T04:40:19.538Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.552Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.615Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "ui",
+          "syncedAt": "2026-03-15T04:40:19.615Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "heart_empty": {
+      "id": "heart_empty",
+      "name": "Heart Empty",
+      "category": "ui",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "stylized 3D dark heart icon, empty health indicator, matte surface, desaturated, game UI, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 16,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/ui/heart_empty.png",
+          "generatedAt": "2026-03-15T04:40:19.630Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.645Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.708Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "ui",
+          "syncedAt": "2026-03-15T04:40:19.708Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "shield": {
+      "id": "shield",
+      "name": "Shield",
+      "category": "ui",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "stylized 3D blue shield icon, armor indicator, metallic surface with emissive edge, game UI, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 16,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/ui/shield.png",
+          "generatedAt": "2026-03-15T04:40:19.722Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.740Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.802Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "ui",
+          "syncedAt": "2026-03-15T04:40:19.802Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "gun_icon": {
+      "id": "gun_icon",
+      "name": "Gun Icon",
+      "category": "ui",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "stylized 3D gun icon, ranged weapon indicator, clean silhouette, game UI, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 16,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/ui/gun_icon.png",
+          "generatedAt": "2026-03-15T04:40:19.816Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.833Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.887Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "ui",
+          "syncedAt": "2026-03-15T04:40:19.887Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "melee_icon": {
+      "id": "melee_icon",
+      "name": "Melee Icon",
+      "category": "ui",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "stylized 3D sword icon, melee weapon indicator, metallic blade with glow, game UI, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 16,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/ui/melee_icon.png",
+          "generatedAt": "2026-03-15T04:40:19.912Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:19.928Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:19.988Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "ui",
+          "syncedAt": "2026-03-15T04:40:19.988Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "round_pip_on": {
+      "id": "round_pip_on",
+      "name": "Round Pip On",
+      "category": "ui",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "stylized 3D glowing circular pip, round won indicator, emissive cyan glow, game UI, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 8,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/ui/round_pip_on.png",
+          "generatedAt": "2026-03-15T04:40:20.004Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:20.019Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:20.081Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "ui",
+          "syncedAt": "2026-03-15T04:40:20.081Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "round_pip_off": {
+      "id": "round_pip_off",
+      "name": "Round Pip Off",
+      "category": "ui",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "stylized 3D dim circular pip, round not won indicator, dark matte surface, game UI, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "idle"
+      ],
+      "directions": 1,
+      "size": 8,
+      "color": "#ffffff",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "path": "concepts/ui/round_pip_off.png",
+          "generatedAt": "2026-03-15T04:40:20.098Z"
+        },
+        "render": {
+          "status": "done",
+          "frameCount": 1,
+          "generatedAt": "2026-03-15T04:40:20.117Z"
+        },
+        "pack": {
+          "status": "done",
+          "generatedAt": "2026-03-15T04:40:20.172Z"
+        }
+      },
+      "assignedTo": {
+        "arena": {
+          "atlas": "ui",
+          "syncedAt": "2026-03-15T04:40:20.172Z"
+        }
+      },
+      "conceptBackend": "comfyui"
+    },
+    "student_f": {
+      "id": "student_f",
+      "name": "Student (Female)",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, young female university student character, casual hoodie and jeans, ponytail hairstyle, backpack, sneakers, determined expression, low-poly 3D model, isometric game sprite, bright cyan accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#00f2ff",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T09:56:48.801Z",
+          "path": "concepts/characters/student_f.png",
+          "backend": "gemini-imagen",
+          "promptHash": "74c9ed06a1408f94"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/student_f.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:03:10.422Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:21:32.386Z",
+          "backend": "packer"
+        }
+      },
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "researcher_f": {
+      "id": "researcher_f",
+      "name": "Researcher (Female)",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, full-body female character, research scientist, lab coat over blouse, safety goggles on forehead, determined expression, low-poly 3D model, isometric game sprite, mint green accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#3eff8b",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "pending"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/researcher_f.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending"
+        },
+        "pack": {
+          "status": "pending"
+        }
+      },
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "professor_f": {
+      "id": "professor_f",
+      "name": "Professor (Female)",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, female university professor character, tweed blazer, reading glasses, professional bun hairstyle, books under arm, authoritative stance, low-poly 3D model, isometric game sprite, purple accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#bc13fe",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T09:46:41.256Z",
+          "path": "concepts/characters/professor_f.png",
+          "backend": "gemini-imagen",
+          "promptHash": "5182a25d0db89539"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/professor_f.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:12:07.596Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:21:35.227Z",
+          "backend": "packer"
+        }
+      },
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "dean_f": {
+      "id": "dean_f",
+      "name": "Dean (Female)",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, full-body female character, university dean, formal business suit, pearl necklace, elegant updo hairstyle, confident posture, gold accent details, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ffd700",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T09:48:25.190Z",
+          "path": "concepts/characters/dean_f.png",
+          "backend": "gemini-imagen",
+          "promptHash": "0ead15e805a22db2"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/dean_f.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:19:29.619Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:21:36.678Z",
+          "backend": "packer"
+        }
+      },
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "librarian_f": {
+      "id": "librarian_f",
+      "name": "Librarian (Female)",
+      "category": "characters",
+      "tags": [
+        "arena"
+      ],
+      "prompt": "single front view, full-body female character, university librarian, cardigan sweater, vintage round glasses, long braided hair, warm expression, coral pink accent color, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk",
+        "gun",
+        "machine",
+        "reload",
+        "hold",
+        "silencer"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ff6b9d",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T09:47:00.888Z",
+          "path": "concepts/characters/librarian_f.png",
+          "backend": "gemini-imagen",
+          "promptHash": "4e76709d06bbfe43"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/librarian_f.glb",
+          "source": "Stylized Low-Poly Girl by VoidOwl (CC Attribution)",
+          "sourceUid": "fcc1db9486594c4d98ff4a262004d692"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:20:59.823Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T10:21:38.123Z",
+          "backend": "packer"
+        }
+      },
+      "sketchfabUid": "fcc1db9486594c4d98ff4a262004d692",
+      "modelBackend": "sketchfab"
+    },
+    "student_neon": {
+      "id": "student_neon",
+      "name": "Student Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, young male university student, casual hoodie and jeans, backpack, glowing neon cyan outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#00f2ff",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:16.164Z",
+          "path": "concepts/characters/student_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "319c6aa095f7ba3d"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/student.glb",
+          "source": "Shared from student"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:28:03.313Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T12:07:40.135Z",
+          "backend": "packer"
+        }
+      }
+    },
+    "student_formal": {
+      "id": "student_formal",
+      "name": "Student Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, young male university student, black tie suit, polished shoes, youthful face, determined expression, cyan accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#00f2ff",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:21.673Z",
+          "path": "concepts/characters/student_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "ad3a74385e215b6f"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/student.glb",
+          "source": "Shared from student"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:30:14.163Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "student_f_neon": {
+      "id": "student_f_neon",
+      "name": "Student (F) Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, young female university student, ponytail hairstyle, casual hoodie and jeans, glowing neon cyan outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#00f2ff",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:28.486Z",
+          "path": "concepts/characters/student_f_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "6107ca94215d013e"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/student_f.glb",
+          "source": "Shared from student_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:33:31.845Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "student_f_formal": {
+      "id": "student_f_formal",
+      "name": "Student (F) Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, young female university student, elegant evening gown, ponytail updo, polished shoes, youthful face, cyan accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#00f2ff",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:36.113Z",
+          "path": "concepts/characters/student_f_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "ab188526035d5bae"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/student_f.glb",
+          "source": "Shared from student_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:37:11.200Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "researcher_neon": {
+      "id": "researcher_neon",
+      "name": "Researcher Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, male university researcher, lab coat, safety goggles on forehead, glowing neon mint green outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#3eff8b",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:42.808Z",
+          "path": "concepts/characters/researcher_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "d04b66cf5b7d10b3"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/researcher.glb",
+          "source": "Shared from researcher"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:43:20.991Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "researcher_formal": {
+      "id": "researcher_formal",
+      "name": "Researcher Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, male university researcher, black tie suit, safety goggles pushed up on forehead, polished shoes, focused expression, mint green accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#3eff8b",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:48.518Z",
+          "path": "concepts/characters/researcher_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "59fb25f9060cbfad"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/researcher.glb",
+          "source": "Shared from researcher"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:46:04.154Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "researcher_f_neon": {
+      "id": "researcher_f_neon",
+      "name": "Researcher (F) Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female research scientist, lab coat over blouse, safety goggles on forehead, glowing neon mint green outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#3eff8b",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:53.560Z",
+          "path": "concepts/characters/researcher_f_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "6cf89ebabe5325e1"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/researcher_f.glb",
+          "source": "Shared from researcher_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:47:22.199Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "researcher_f_formal": {
+      "id": "researcher_f_formal",
+      "name": "Researcher (F) Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female research scientist, elegant evening gown, safety goggles as hair accessory, polished shoes, determined expression, mint green accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#3eff8b",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:11:58.820Z",
+          "path": "concepts/characters/researcher_f_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "bf66b70df0e9af7f"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/researcher_f.glb",
+          "source": "Shared from researcher_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:48:28.954Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "professor_neon": {
+      "id": "professor_neon",
+      "name": "Professor Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, senior male university professor, tweed jacket with elbow patches, bow tie, glasses, grey hair, glowing neon purple outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#bc13fe",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:12:06.896Z",
+          "path": "concepts/characters/professor_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "acadd3f3735ee4d0"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/professor.glb",
+          "source": "Shared from professor"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:49:35.827Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "professor_formal": {
+      "id": "professor_formal",
+      "name": "Professor Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, senior male university professor, elegant tuxedo with purple pocket square, glasses, grey hair, bow tie, authoritative stance, purple accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#bc13fe",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:12:13.545Z",
+          "path": "concepts/characters/professor_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "a67d7b92fc45442c"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/professor.glb",
+          "source": "Shared from professor"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:50:55.984Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "professor_f_neon": {
+      "id": "professor_f_neon",
+      "name": "Professor (F) Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female university professor, tweed blazer, reading glasses, professional bun hairstyle, glowing neon purple outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#bc13fe",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:12:18.600Z",
+          "path": "concepts/characters/professor_f_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "8a4ae7cb2b6ff7d0"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/professor_f.glb",
+          "source": "Shared from professor_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:53:25.371Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "professor_f_formal": {
+      "id": "professor_f_formal",
+      "name": "Professor (F) Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female university professor, elegant evening gown, reading glasses, professional bun hairstyle, purple accent details, authoritative stance, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#bc13fe",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:12:23.409Z",
+          "path": "concepts/characters/professor_f_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "910f80f74df9c71b"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/professor_f.glb",
+          "source": "Shared from professor_f"
+        },
+        "render": {
+          "status": "pending",
+          "frameCount": 8,
+          "generatedAt": "2026-03-21T15:00:00Z"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "dean_neon": {
+      "id": "dean_neon",
+      "name": "Dean Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, male university dean, formal dark suit, slicked-back silver hair, broad shoulders, glowing neon gold outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ffd700",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:12:37.266Z",
+          "path": "concepts/characters/dean_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "2757984ece3dc32b"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/dean.glb",
+          "source": "Shared from dean"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T12:02:09.222Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "dean_formal": {
+      "id": "dean_formal",
+      "name": "Dean Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, male university dean, white tie tuxedo with gold cufflinks, slicked-back silver hair, commanding posture, gold accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ffd700",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:12:47.721Z",
+          "path": "concepts/characters/dean_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "cf96a8a01cf1669c"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/dean.glb",
+          "source": "Shared from dean"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:59:46.618Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "dean_f_neon": {
+      "id": "dean_f_neon",
+      "name": "Dean (F) Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female university dean, formal business suit, elegant updo hairstyle, glowing neon gold outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ffd700",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:12:54.464Z",
+          "path": "concepts/characters/dean_f_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "1f1c9ea8414de715"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/dean_f.glb",
+          "source": "Shared from dean_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:57:46.332Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "dean_f_formal": {
+      "id": "dean_f_formal",
+      "name": "Dean (F) Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female university dean, elegant evening gown, pearl necklace, elegant updo hairstyle, confident posture, gold accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ffd700",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:13:00.076Z",
+          "path": "concepts/characters/dean_f_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "64130fd7cca54844"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/dean_f.glb",
+          "source": "Shared from dean_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T11:56:06.305Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "librarian_neon": {
+      "id": "librarian_neon",
+      "name": "Librarian Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, male university librarian, cardigan sweater, reading glasses on chain, book under arm, glowing neon coral pink outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ff6b9d",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:13:07.480Z",
+          "path": "concepts/characters/librarian_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "35b6ca9214542c97"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/librarian.glb",
+          "source": "Shared from librarian"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T12:07:26.043Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "librarian_formal": {
+      "id": "librarian_formal",
+      "name": "Librarian Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, male university librarian, elegant black tie suit, reading glasses on chain, book under arm, calm demeanor, coral pink accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ff6b9d",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:13:11.722Z",
+          "path": "concepts/characters/librarian_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "6aae5a54f2daf918"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/librarian.glb",
+          "source": "Shared from librarian"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T12:05:52.044Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "librarian_f_neon": {
+      "id": "librarian_f_neon",
+      "name": "Librarian (F) Neon",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female university librarian, cardigan sweater, vintage round glasses, long braided hair, glowing neon coral pink outlines, cyberpunk style, dark body with bright edge lighting, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ff6b9d",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:13:17.710Z",
+          "path": "concepts/characters/librarian_f_neon.png",
+          "backend": "gemini-imagen",
+          "promptHash": "274298fc0bfba70a"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/librarian_f.glb",
+          "source": "Shared from librarian_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T12:04:49.447Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    },
+    "librarian_f_formal": {
+      "id": "librarian_f_formal",
+      "name": "Librarian (F) Formal",
+      "category": "characters",
+      "tags": [
+        "arena",
+        "skin"
+      ],
+      "prompt": "single front view, female university librarian, elegant evening gown, vintage round glasses, long braided hair updo, warm expression, coral pink accent details, full body, isometric 3D game character, low poly, A-pose, no shadows, no ground, no text, no numbers, transparent background",
+      "poses": [
+        "stand",
+        "walk"
+      ],
+      "directions": 8,
+      "size": 64,
+      "color": "#ff6b9d",
+      "conceptBackend": "comfyui",
+      "pipeline": {
+        "concept": {
+          "status": "done",
+          "generatedAt": "2026-03-16T11:13:22.315Z",
+          "path": "concepts/characters/librarian_f_formal.png",
+          "backend": "gemini-imagen",
+          "promptHash": "35e0dd18047fe89f"
+        },
+        "model": {
+          "status": "done",
+          "generatedAt": "2026-03-28T02:43:11.668Z",
+          "backend": "sketchfab",
+          "path": "models/characters/librarian_f.glb",
+          "source": "Shared from librarian_f"
+        },
+        "render": {
+          "status": "pending",
+          "generatedAt": "2026-03-16T12:03:14.405Z",
+          "frameCount": 8,
+          "backend": "blender"
+        },
+        "pack": {
+          "status": "pending",
+          "generatedAt": "2026-03-21T15:00:00Z"
+        }
+      }
+    }
+  }
+}

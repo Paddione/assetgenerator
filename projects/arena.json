@@ -1,0 +1,254 @@
+{
+  "name": "arena",
+  "audioRoot": "../arena/assets/audio",
+  "outputRoot": "/mnt/pve3a/audio-library/exports/arena",
+  "processScript": null,
+  "generateScript": "../arena/scripts/generate_audio.py",
+  "manifestPath": "../arena/assets/manifest.json",
+  "sounds": {
+    "armor_pickup": {
+      "type": "sfx",
+      "prompt": "soft metallic shimmer, gentle shield activation hum, quiet low resonance click, soothing video game equip sound",
+      "seed": null,
+      "duration": 0.4,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/armor_pickup.wav"
+    },
+    "bullet_impact": {
+      "type": "sfx",
+      "prompt": "muffled bullet hitting soft surface, dampened thud impact, quiet ricochet, understated video game sound effect",
+      "seed": null,
+      "duration": 0.2,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/bullet_impact.wav"
+    },
+    "footstep_sprint": {
+      "type": "sfx",
+      "prompt": "soft muffled fast footstep on carpet, light padded running step, quiet dampened sprinting sound, gentle video game footstep",
+      "seed": null,
+      "duration": 0.15,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/footstep_sprint.wav"
+    },
+    "footstep_walk": {
+      "type": "sfx",
+      "prompt": "very soft muffled footstep on carpet, barely audible padded step, quiet dampened walking sound, gentle video game footstep",
+      "seed": null,
+      "duration": 0.2,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/footstep_walk.wav"
+    },
+    "grenade_explode": {
+      "type": "sfx",
+      "prompt": "muffled distant explosion, dampened low boom with soft rumble, bass-heavy but quiet blast, understated video game explosion",
+      "seed": null,
+      "duration": 1,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/grenade_explode.wav"
+    },
+    "grenade_launch": {
+      "type": "sfx",
+      "prompt": "muffled launcher thump, soft pneumatic release, dampened mechanical pop, quiet heavy weapon fire, video game sound effect",
+      "seed": null,
+      "duration": 0.5,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/grenade_launch.wav"
+    },
+    "gunshot": {
+      "type": "sfx",
+      "prompt": "suppressed pistol shot, silenced weapon pew, soft muffled thud with subtle high-end click, low volume quiet firearm, video game sound effect",
+      "seed": null,
+      "duration": 0.3,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/gunshot.wav"
+    },
+    "gunshot_new": {
+      "type": "sfx",
+      "prompt": "crisp suppressed gunshot, modern tactical weapon fire, sharp mechanical click with muffled bang, short reverb tail, video game sound effect",
+      "seed": null,
+      "duration": 1.1,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/gunshot_new.wav"
+    },
+    "health_pickup": {
+      "type": "sfx",
+      "prompt": "gentle soft chime, warm crystalline ding, quiet positive notification, soothing video game pickup sound",
+      "seed": null,
+      "duration": 0.4,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/health_pickup.wav"
+    },
+    "match_defeat": {
+      "type": "sfx",
+      "prompt": "gentle melancholic tone, soft descending minor chord, warm but sad synth pad, quiet video game defeat sting",
+      "seed": null,
+      "duration": 2,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/match_defeat.wav"
+    },
+    "match_victory": {
+      "type": "sfx",
+      "prompt": "warm triumphant melody, gentle ascending synth chords, soft celebratory chime, understated video game victory sting",
+      "seed": null,
+      "duration": 2,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/match_victory.wav"
+    },
+    "melee_swing": {
+      "type": "sfx",
+      "prompt": "soft blade whoosh through air, gentle swift melee swipe, light breeze-like sweep, understated video game sound effect",
+      "seed": null,
+      "duration": 0.3,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/melee_swing.wav"
+    },
+    "player_death": {
+      "type": "sfx",
+      "prompt": "soft electronic fade-out tone, gentle descending hum, quiet digital dissolve, understated video game death sound",
+      "seed": null,
+      "duration": 0.8,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/player_death.wav"
+    },
+    "player_hit": {
+      "type": "sfx",
+      "prompt": "soft padded impact, muffled body hit, gentle dull thump, quiet low-frequency, video game sound effect",
+      "seed": null,
+      "duration": 0.3,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/player_hit.wav"
+    },
+    "round_end": {
+      "type": "sfx",
+      "prompt": "gentle resolution chime, soft bell with warm reverb, quiet closing tone, understated video game round end",
+      "seed": null,
+      "duration": 1.5,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/round_end.wav"
+    },
+    "round_start": {
+      "type": "sfx",
+      "prompt": "soft electronic readiness tone, gentle ascending synth pulse, calm but alerting, understated video game round start",
+      "seed": null,
+      "duration": 1.5,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/round_start.wav"
+    },
+    "zone_tick": {
+      "type": "sfx",
+      "prompt": "quiet soft electric crackle, gentle static tick, subtle low buzz, understated recurring damage, video game",
+      "seed": null,
+      "duration": 0.3,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/zone_tick.wav"
+    },
+    "zone_warning": {
+      "type": "sfx",
+      "prompt": "soft pulsing low hum, gentle warning tone, muffled rhythmic pulse, non-harsh alert, quiet video game zone warning",
+      "seed": null,
+      "duration": 1,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "sfx/zone_warning.wav"
+    },
+    "battle": {
+      "type": "music",
+      "prompt": "intense electronic battle music, fast driving tempo, aggressive synths, loopable, video game combat theme",
+      "seed": null,
+      "duration": 90,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "music/battle.wav",
+      "loop": true
+    },
+    "defeat": {
+      "type": "music",
+      "prompt": "melancholic sci-fi defeat theme, descending minor key synths, somber electronic tones, electronic string pad, sad loss sting, video game, 8 seconds",
+      "seed": null,
+      "duration": 8,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "music/defeat.wav",
+      "loop": false
+    },
+    "lobby": {
+      "type": "music",
+      "prompt": "ambient atmospheric music, mysterious dark electronic, slow tempo, loopable, video game lobby theme",
+      "seed": null,
+      "duration": 60,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "music/lobby.wav",
+      "loop": true
+    },
+    "respect_event": {
+      "type": "music",
+      "prompt": "short dramatic sci-fi fanfare, respectful acknowledgment sting, rising synth chord with reverb tail, tense anticipation, round start announcement, video game, 4 seconds",
+      "seed": null,
+      "duration": 4.4,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "music/respect_event.wav"
+    },
+    "victory": {
+      "type": "music",
+      "prompt": "triumphant sci-fi victory fanfare, ascending heroic synth melody, bright major key, dynamic crescendo, celebratory energy, video game win sting, 8 seconds",
+      "seed": null,
+      "duration": 8,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "music/victory.wav",
+      "loop": false
+    },
+    "respectisevt": {
+      "type": "music",
+      "prompt": "",
+      "seed": null,
+      "duration": 4.4,
+      "backend": "default",
+      "flagged": false,
+      "lastGeneratedAt": null,
+      "filePath": "music/respectisevt.wav"
+    }
+  }
+}

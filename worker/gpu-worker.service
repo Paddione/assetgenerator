@@ -1,0 +1,16 @@
+[Unit]
+Description=Assetgenerator GPU Worker
+After=network-online.target
+
+[Service]
+EnvironmentFile=/home/patrick/projects/Assetgenerator/.env
+Type=simple
+WorkingDirectory=/home/patrick/projects/Assetgenerator/worker
+ExecStart=/usr/bin/node index.js
+Environment=WORKER_SERVER_URL=wss://assetgen.korczewski.de/ws/worker
+Environment=IDLE_TIMEOUT_MS=600000
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

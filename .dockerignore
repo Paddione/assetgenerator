@@ -1,0 +1,10 @@
+node_modules
+worker/
+test/
+.git
+.gitignore
+*.md
+.env*
+coverage/
+test-results/
+.superpowers/
