@@ -54,6 +54,18 @@ spec:
                   name: assetgen-secrets
                   key: SKETCHFAB_API_KEY
                   optional: true
+            - name: FIGMA_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: FIGMA_API_KEY
+                  optional: true
+            - name: FIGMA_FILE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: FIGMA_FILE_KEY
+                  optional: true
             - name: TZ
               value: Europe/Berlin
           ports:

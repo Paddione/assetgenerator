@@ -28,7 +28,8 @@
       "defaultPoses": ["idle"],
       "size": 32,
       "has3D": false,
-      "conceptResolution": 512
+      "conceptResolution": 512,
+      "conceptBackendPriority": ["figma", "comfyui", "gemini-imagen", "siliconflow"]
     },
     "cover": {
       "directions": 1,
@@ -42,7 +43,8 @@
       "defaultPoses": ["idle"],
       "size": 16,
       "has3D": false,
-      "conceptResolution": 512
+      "conceptResolution": 512,
+      "conceptBackendPriority": ["figma", "comfyui", "gemini-imagen", "siliconflow"]
     }
   },
   "render": {
@@ -57,5 +59,6 @@
   },
   "tags": ["arena"],
   "conceptBackendPriority": ["comfyui", "gemini-imagen", "siliconflow", "diffusers"],
-  "modelBackendPriority": ["hunyuan3d-local", "triposr", "meshy", "hyper3d", "hunyuan3d"]
+  "modelBackendPriority": ["blender-mcp", "hunyuan3d-local", "triposr", "meshy", "hyper3d", "hunyuan3d"],
+  "renderBackendPriority": ["blender-mcp", "blender"]
 }

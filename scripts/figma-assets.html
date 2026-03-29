@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: transparent; }
+
+  /* Each asset is a standalone element sized for export */
+  .asset { display: inline-block; position: relative; image-rendering: pixelated; }
+
+  /* ── UI: Health Bar ── */
+  #health_bar {
+    width: 128px; height: 20px;
+    background: #1a1a2e;
+    border: 2px solid #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  #health_bar .fill {
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(180deg, #4ade80 0%, #22c55e 40%, #16a34a 100%);
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  #health_bar .segments {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+  }
+  #health_bar .seg {
+    flex: 1;
+    border-right: 1px solid rgba(0,0,0,0.2);
+  }
+  #health_bar .icon {
+    position: absolute; left: 3px; top: 1px;
+    font-size: 12px; line-height: 1; color: #fff;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    font-family: monospace; font-weight: bold;
+  }
+
+  /* ── UI: Ammo Counter ── */
+  #ammo_counter {
+    width: 80px; height: 32px;
+    background: #1a1a2e;
+    border: 2px solid #6b7280;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    font-family: 'Courier New', monospace;
+    color: #fbbf24;
+    font-size: 18px; font-weight: bold;
+    text-shadow: 0 0 6px rgba(251,191,36,0.6);
+    letter-spacing: 1px;
+    position: relative;
+  }
+  #ammo_counter::before {
+    content: '';
+    width: 10px; height: 16px;
+    background: #fbbf24;
+    border-radius: 1px 1px 0 0;
+    margin-right: 4px;
+    box-shadow: inset -2px 0 0 rgba(0,0,0,0.2);
+  }
+  #ammo_counter .divider { color: #6b7280; font-size: 14px; }
+
+  /* ── UI: Crosshair ── */
+  #crosshair {
+    width: 32px; height: 32px; position: relative;
+  }
+  #crosshair .h { position: absolute; top: 14px; width: 10px; height: 4px; background: #ef4444; border-radius: 1px; }
+  #crosshair .h.l { left: 0; }
+  #crosshair .h.r { right: 0; }
+  #crosshair .v { position: absolute; left: 14px; height: 10px; width: 4px; background: #ef4444; border-radius: 1px; }
+  #crosshair .v.t { top: 0; }
+  #crosshair .v.b { bottom: 0; }
+  #crosshair .dot { position: absolute; top: 14px; left: 14px; width: 4px; height: 4px; background: #fff; border-radius: 50%; }
+  #crosshair .ring {
+    position: absolute; top: 6px; left: 6px; width: 20px; height: 20px;
+    border: 2px solid rgba(239,68,68,0.4); border-radius: 50%;
+  }
+
+  /* ── UI: Action Button ── */
+  #action_button {
+    width: 48px; height: 48px;
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    border: 2px solid #93c5fd;
+    border-bottom-color: #1e40af;
+    border-right-color: #1e40af;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  #action_button .icon {
+    width: 24px; height: 24px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    position: relative;
+  }
+  #action_button .icon::after {
+    content: '';
+    position: absolute; top: 3px; left: 6px;
+    width: 0; height: 0;
+    border-left: 8px solid #fff;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+  /* ── UI: Minimap Frame ── */
+  #minimap_frame {
+    width: 96px; height: 96px;
+    background: #0f172a;
+    border: 3px solid #475569;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  #minimap_frame .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(71,85,105,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(71,85,105,0.3) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+  #minimap_frame .player {
+    position: absolute; top: 42px; left: 42px;
+    width: 6px; height: 6px;
+    background: #22d3ee;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #22d3ee, 0 0 8px rgba(34,211,238,0.5);
+  }
+  #minimap_frame .fov {
+    position: absolute; top: 20px; left: 40px;
+    width: 0; height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 25px solid rgba(34,211,238,0.15);
+  }
+  #minimap_frame .dot { position: absolute; width: 4px; height: 4px; background: #ef4444; border-radius: 50%; }
+  #minimap_frame .dot.d1 { top: 22px; left: 65px; }
+  #minimap_frame .dot.d2 { top: 60px; left: 28px; }
+  #minimap_frame .dot.d3 { top: 35px; left: 15px; }
+
+  /* ── Tile: Grass ── */
+  #grass_tile {
+    width: 64px; height: 64px;
+    background: #4a7c3f;
+    position: relative; overflow: hidden;
+  }
+  #grass_tile::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 15% 25%, #5a9a4a 2px, transparent 2px),
+      radial-gradient(circle at 55% 15%, #3d6b34 2px, transparent 2px),
+      radial-gradient(circle at 80% 40%, #5a9a4a 1.5px, transparent 1.5px),
+      radial-gradient(circle at 35% 60%, #3d6b34 2px, transparent 2px),
+      radial-gradient(circle at 70% 75%, #5a9a4a 1.5px, transparent 1.5px),
+      radial-gradient(circle at 20% 85%, #6aaa5a 1.5px, transparent 1.5px),
+      radial-gradient(circle at 90% 90%, #3d6b34 2px, transparent 2px),
+      radial-gradient(circle at 45% 45%, #6aaa5a 1px, transparent 1px);
+  }
+
+  /* ── Tile: Concrete ── */
+  #concrete_tile {
+    width: 64px; height: 64px;
+    background: #9ca3af;
+    position: relative; overflow: hidden;
+  }
+  #concrete_tile::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, transparent 30px, rgba(0,0,0,0.05) 30px, rgba(0,0,0,0.05) 32px, transparent 32px),
+      linear-gradient(0deg, transparent 30px, rgba(0,0,0,0.05) 30px, rgba(0,0,0,0.05) 32px, transparent 32px),
+      radial-gradient(circle at 10% 20%, rgba(0,0,0,0.06) 3px, transparent 3px),
+      radial-gradient(circle at 70% 60%, rgba(0,0,0,0.04) 4px, transparent 4px),
+      radial-gradient(circle at 40% 80%, rgba(0,0,0,0.06) 2px, transparent 2px);
+  }
+
+  /* ── Tile: Sand ── */
+  #sand_tile {
+    width: 64px; height: 64px;
+    background: #d4a853;
+    position: relative; overflow: hidden;
+  }
+  #sand_tile::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, #c9983f 3px, transparent 3px),
+      radial-gradient(circle at 60% 20%, #deb863 2px, transparent 2px),
+      radial-gradient(circle at 80% 55%, #c9983f 2.5px, transparent 2.5px),
+      radial-gradient(circle at 30% 70%, #deb863 2px, transparent 2px),
+      radial-gradient(circle at 50% 50%, #c9983f 1.5px, transparent 1.5px),
+      radial-gradient(circle at 10% 90%, #deb863 3px, transparent 3px),
+      radial-gradient(circle at 85% 85%, #c9983f 2px, transparent 2px);
+  }
+
+  /* ── Tile: Water ── */
+  #water_tile {
+    width: 64px; height: 64px;
+    background: linear-gradient(160deg, #2563eb 0%, #1d4ed8 40%, #1e40af 70%, #2563eb 100%);
+    position: relative; overflow: hidden;
+  }
+  #water_tile::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(170deg, transparent 20%, rgba(255,255,255,0.12) 22%, transparent 24%),
+      linear-gradient(170deg, transparent 45%, rgba(255,255,255,0.08) 47%, transparent 49%),
+      linear-gradient(170deg, transparent 70%, rgba(255,255,255,0.1) 72%, transparent 74%);
+  }
+</style>
+</head>
+<body>
+<!-- Each asset rendered separately for individual screenshots -->
+<div id="health_bar" class="asset">
+  <div class="fill"></div>
+  <div class="segments"><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+  <span class="icon">+</span>
+</div>
+<br><br>
+<div id="ammo_counter" class="asset">
+  <span>30</span><span class="divider">/</span><span>90</span>
+</div>
+<br><br>
+<div id="crosshair" class="asset">
+  <div class="ring"></div>
+  <div class="h l"></div><div class="h r"></div>
+  <div class="v t"></div><div class="v b"></div>
+  <div class="dot"></div>
+</div>
+<br><br>
+<div id="action_button" class="asset">
+  <div class="icon"></div>
+</div>
+<br><br>
+<div id="minimap_frame" class="asset">
+  <div class="grid"></div>
+  <div class="fov"></div>
+  <div class="player"></div>
+  <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
+</div>
+<br><br>
+<div id="grass_tile" class="asset"></div>
+<br><br>
+<div id="concrete_tile" class="asset"></div>
+<br><br>
+<div id="sand_tile" class="asset"></div>
+<br><br>
+<div id="water_tile" class="asset"></div>
+</body>
+</html>

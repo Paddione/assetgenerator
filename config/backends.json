@@ -43,5 +43,11 @@
     "label": "PolyHaven (Free — Textures/HDRIs/Models)",
     "enabled": true,
     "adapter": "polyhaven"
+  },
+  "figma": {
+    "label": "Figma (Design System — UI/Tiles/Tokens)",
+    "enabled": true,
+    "adapter": "figma",
+    "requiresEnv": "FIGMA_API_KEY"
   }
 }

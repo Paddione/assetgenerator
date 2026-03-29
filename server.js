@@ -849,7 +849,9 @@ let _rateLimitedBackends = new Set();
  * Returns { result, adapterName } on success.
  */
 async function generateConceptWithFallback({ id, asset, vConfig, onFallback }) {
-  const configPriority = vConfig.conceptBackendPriority || ['comfyui', 'gemini-imagen', 'siliconflow'];
+  // Per-category priority (e.g. ui/tiles prefer figma) falls back to global priority
+  const catConfig = vConfig.categories?.[asset.category] || {};
+  const configPriority = catConfig.conceptBackendPriority || vConfig.conceptBackendPriority || ['comfyui', 'gemini-imagen', 'siliconflow'];
   let backends;
   if (asset.conceptBackend) {
     backends = [asset.conceptBackend, ...configPriority.filter(b => b !== asset.conceptBackend)];
@@ -870,6 +872,12 @@ async function generateConceptWithFallback({ id, asset, vConfig, onFallback }) {
 
     try {
       const adapter = await import(adapterPath);
+      // Pre-flight availability check (for adapters like blender-mcp)
+      if (typeof adapter.isAvailable === 'function' && !(await adapter.isAvailable())) {
+        console.log(`  [Fallback] ${backendName} not available, trying next backend...`);
+        if (onFallback) onFallback(backendName, 'not available');
+        continue;
+      }
       const result = await adapter.generate({ id, asset, config: vConfig, libraryRoot: vConfig.libraryRoot });
       return { result, adapterName: backendName };
     } catch (err) {
@@ -880,11 +888,16 @@ async function generateConceptWithFallback({ id, asset, vConfig, onFallback }) {
         lastError = err;
         continue;
       }
+      if (err.name === 'BackendSkipError') {
+        console.log(`  [Fallback] ${backendName}: ${err.message}`);
+        if (onFallback) onFallback(backendName, err.message);
+        continue;
+      }
       throw err;
     }
   }
 
-  throw lastError || new Error('All concept backends exhausted (rate-limited)');
+  throw lastError || new Error('All concept backends exhausted');
 }
 
 let _rateLimitedModelBackends = new Set();
@@ -916,6 +929,12 @@ async function generateModelWithFallback({ id, asset, vConfig, onFallback }) {
 
     try {
       const adapter = await import(adapterPath);
+      // Pre-flight availability check (for adapters like blender-mcp)
+      if (typeof adapter.isAvailable === 'function' && !(await adapter.isAvailable())) {
+        console.log(`  [Model Fallback] ${backendName} not available, trying next backend...`);
+        if (onFallback) onFallback(backendName, 'not available');
+        continue;
+      }
       const result = await adapter.generate({ id, asset, config: vConfig, libraryRoot: vConfig.libraryRoot });
       return { result, adapterName: backendName };
     } catch (err) {
@@ -926,11 +945,16 @@ async function generateModelWithFallback({ id, asset, vConfig, onFallback }) {
         lastError = err;
         continue;
       }
+      if (err.name === 'BackendSkipError') {
+        console.log(`  [Model Fallback] ${backendName}: ${err.message}`);
+        if (onFallback) onFallback(backendName, err.message);
+        continue;
+      }
       throw err;
     }
   }
 
-  throw lastError || new Error('All model backends exhausted (rate-limited)');
+  throw lastError || new Error('All model backends exhausted');
 }
 
 app.get('/api/visual-library', (req, res) => {
@@ -1046,7 +1070,7 @@ app.post('/api/visual-library/:id/concept-from-snapshot', async (req, res) => {
 });
 
 app.post('/api/visual-library', (req, res) => {
-  const { id, name, category, tags, prompt, poses, directions, size, color, conceptBackend, modelBackend } = req.body;
+  const { id, name, category, tags, prompt, poses, directions, size, color, conceptBackend, modelBackend, figmaNodeId, figmaFileKey } = req.body;
   if (!id || !name || !category) return res.status(400).json({ error: 'id, name, category required' });
   const library = loadVisualLibrary();
   if (library.assets[id]) return res.status(409).json({ error: 'Asset already exists' });
@@ -1072,6 +1096,8 @@ app.post('/api/visual-library', (req, res) => {
     color: color || '#ffffff',
     conceptBackend: conceptBackend || null,
     modelBackend: modelBackend || null,
+    figmaNodeId: figmaNodeId || null,
+    figmaFileKey: figmaFileKey || null,
     pipeline,
     assignedTo: {},
   };
@@ -1085,7 +1111,7 @@ app.put('/api/visual-library/:id', (req, res) => {
   const asset = library.assets[req.params.id];
   if (!asset) return res.status(404).json({ error: 'Asset not found' });
   const oldPrompt = asset.prompt;
-  const allowed = ['name', 'category', 'tags', 'prompt', 'poses', 'directions', 'size', 'color', 'conceptBackend', 'modelBackend'];
+  const allowed = ['name', 'category', 'tags', 'prompt', 'poses', 'directions', 'size', 'color', 'conceptBackend', 'modelBackend', 'figmaNodeId', 'figmaFileKey'];
   for (const key of allowed) {
     if (req.body[key] !== undefined) asset[key] = req.body[key];
   }
@@ -1422,8 +1448,33 @@ app.post('/api/visual-library/:id/generate/:phase', async (req, res) => {
           });
           result = fallbackResult.result;
           adapterName = fallbackResult.adapterName;
+        } else if (p === 'render') {
+          // Render phase: try backends in priority order (blender-mcp first, CLI fallback)
+          const renderPriority = vConfig.renderBackendPriority || ['blender-mcp', 'blender'];
+          let renderDone = false;
+          for (const renderBackend of renderPriority) {
+            const rPath = join(__dirname, 'adapters', `${renderBackend}.js`);
+            if (!existsSync(rPath)) continue;
+            try {
+              const rAdapter = await import(rPath);
+              if (typeof rAdapter.isAvailable === 'function' && !(await rAdapter.isAvailable())) {
+                console.log(`  [Render] ${renderBackend} not available, trying next...`);
+                res.write(`event: fallback\ndata: ${JSON.stringify({ asset: asset.id, phase: p, from: renderBackend, reason: 'not available' })}\n\n`);
+                continue;
+              }
+              result = await rAdapter.generate({ id: asset.id, asset, config: vConfig, libraryRoot: vConfig.libraryRoot });
+              adapterName = renderBackend;
+              renderDone = true;
+              break;
+            } catch (renderErr) {
+              console.log(`  [Render] ${renderBackend} failed: ${renderErr.message}, trying next...`);
+              res.write(`event: fallback\ndata: ${JSON.stringify({ asset: asset.id, phase: p, from: renderBackend, reason: renderErr.message })}\n\n`);
+            }
+          }
+          if (!renderDone) throw new Error('All render backends exhausted');
         } else {
-          const defaultAdapterMap = { render: 'blender', pack: 'packer', rig: 'mixamo', animate: 'mixamo' };
+          // pack, rig, animate — single adapter, no fallback chain
+          const defaultAdapterMap = { pack: 'packer', rig: 'mixamo', animate: 'mixamo' };
           adapterName = defaultAdapterMap[p];
           const adapterPath = join(__dirname, 'adapters', `${adapterName}.js`);
           if (!existsSync(adapterPath)) throw new Error(`Adapter not found: ${adapterPath}`);
@@ -1517,6 +1568,82 @@ app.post('/api/projects/:name/sync-visual', (req, res) => {
 
   saveVisualLibrary(library);
   res.json({ synced, count: synced.length, exportPath: exportDir });
+});
+
+// =============================================================================
+// Figma API endpoints
+// =============================================================================
+
+app.get('/api/figma/status', async (req, res) => {
+  try {
+    const adapter = await import(join(__dirname, 'adapters', 'figma.js'));
+    const available = await adapter.isAvailable();
+    res.json({
+      available,
+      fileKey: process.env.FIGMA_FILE_KEY || null,
+      hasApiKey: !!process.env.FIGMA_API_KEY,
+    });
+  } catch (err) {
+    res.json({ available: false, error: err.message });
+  }
+});
+
+app.get('/api/figma/components', async (req, res) => {
+  try {
+    const adapter = await import(join(__dirname, 'adapters', 'figma.js'));
+    const fileKey = req.query.fileKey || process.env.FIGMA_FILE_KEY;
+    const components = await adapter.listComponents(fileKey);
+    res.json({ components, count: components.length });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post('/api/figma/design-tokens', async (req, res) => {
+  try {
+    const adapter = await import(join(__dirname, 'adapters', 'figma.js'));
+    const fileKey = req.body.fileKey || process.env.FIGMA_FILE_KEY;
+    const tokens = await adapter.extractDesignTokens(fileKey);
+
+    // Optionally apply accent colors to assets that match token names
+    if (req.body.apply) {
+      const library = loadVisualLibrary();
+      let applied = 0;
+      for (const [tokenName, { hex }] of Object.entries(tokens)) {
+        // Match token names to asset IDs or categories (e.g. "accent/soldier" → soldier_basic)
+        for (const [id, asset] of Object.entries(library.assets)) {
+          if (tokenName.toLowerCase().includes(id) || tokenName.toLowerCase().includes(asset.category)) {
+            if (asset.color === '#ffffff' || req.body.overwrite) {
+              asset.color = hex;
+              applied++;
+            }
+          }
+        }
+      }
+      if (applied > 0) saveVisualLibrary(library);
+      res.json({ tokens, applied });
+    } else {
+      res.json({ tokens });
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Set a Figma source node on an asset (convenience endpoint)
+app.post('/api/visual-library/:id/figma-source', (req, res) => {
+  const { nodeId, fileKey } = req.body;
+  if (!nodeId) return res.status(400).json({ error: 'nodeId required' });
+  const library = loadVisualLibrary();
+  const asset = library.assets[req.params.id];
+  if (!asset) return res.status(404).json({ error: 'Asset not found' });
+  asset.figmaNodeId = nodeId;
+  if (fileKey) asset.figmaFileKey = fileKey;
+  // Mark concept as pending since source changed
+  if (asset.pipeline.concept) asset.pipeline.concept.status = 'pending';
+  markDownstreamStale(asset, 'concept');
+  saveVisualLibrary(library);
+  res.json(asset);
 });
 
 // =============================================================================
@@ -1666,6 +1793,20 @@ app.get('/api/worker-status', (req, res) => {
 
 app.get('/api/queue-depth', (req, res) => {
   res.json(getQueueDepth());
+});
+
+// Blender MCP status endpoint
+app.get('/api/blender-mcp/status', async (req, res) => {
+  const host = process.env.BLENDER_MCP_HOST || process.env.BLENDER_HOST || '10.10.0.3';
+  const port = parseInt(process.env.BLENDER_MCP_PORT || process.env.BLENDER_PORT || '9876', 10);
+  try {
+    const adapter = await import(join(__dirname, 'adapters', 'blender-mcp.js'));
+    // Single TCP round trip: getSceneInfo doubles as availability check
+    const sceneInfo = await adapter.getSceneInfo();
+    res.json({ available: true, host, port, ...sceneInfo });
+  } catch (err) {
+    res.json({ available: false, host, port, error: err.message });
+  }
 });
 
 app.use(express.static(__dirname));

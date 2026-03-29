@@ -6,6 +6,9 @@ node_modules/
 .env.*
 !.env.example
 
+# MCP config (contains API keys)
+.mcp.json
+
 # Generated/downloaded assets (regeneratable via adapters)
 output/
 generated/

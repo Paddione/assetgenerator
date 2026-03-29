@@ -202,6 +202,37 @@ curl -X POST https://assetgen.korczewski.de/api/visual-library/ak47/texture/rust
   -H 'Content-Type: application/json' -d '{"resolution":"1k"}'
 ```
 
+### Blender MCP Pipeline (Primary)
+
+The asset generator **primarily uses Blender MCP** for model generation and rendering. The `blender-mcp` adapter talks directly to Blender via TCP socket (port 9876) on the GPU machine, bypassing the WebSocket worker layer.
+
+**Architecture:**
+```
+Server → TCP:9876 → Blender MCP Addon (10.10.0.3) → execute in Blender
+                                                    ↕ fallback
+Server → WebSocket → GPU Worker → blender --background (CLI)
+```
+
+**Pipeline flow with Blender MCP + Figma:**
+1. **concept** — Figma (for ui/tiles with `figmaNodeId`) or AI generation (ComfyUI / Gemini Imagen)
+2. **model** — `blender-mcp` generates model IN Blender (Hunyuan3D local or Sketchfab), exports GLB
+3. **render** — `blender-mcp` spawns headless Blender subprocess via `execute_code`, renders sprites
+4. **pack** — unchanged (free-tex-packer-core)
+
+**Fallback chain:** If Blender MCP is unreachable (Blender not running, addon not started), each phase falls back to the next backend in the priority list automatically. The server runs a 5-second `isAvailable()` ping before attempting each MCP operation.
+
+**Checking Blender MCP status:**
+```bash
+curl -s https://assetgen.korczewski.de/api/blender-mcp/status
+# Returns: { "available": true/false, "host": "10.10.0.3", "port": 9876, "name": "Scene", "object_count": N, ... }
+```
+
+**Prerequisites for Blender MCP:**
+1. Blender running on GPU machine (10.10.0.3) with MCP addon enabled
+2. Addon server started (sidebar → BlenderMCP → Start Server)
+3. For model generation: Hunyuan3D local server running (`systemctl --user start hunyuan3d`) OR Sketchfab enabled in addon
+4. Network connectivity from assetgenerator pod/host to 10.10.0.3:9876
+
 ### Blender MCP Interactive Workflow
 
 During Claude Code sessions, Blender MCP tools provide interactive asset creation:
@@ -212,16 +243,94 @@ During Claude Code sessions, Blender MCP tools provide interactive asset creatio
 5. `execute_blender_code` → export GLB to visual library
 6. `generate_hyper3d_model_via_text` → generate 3D directly in scene
 
-### Environment Variables (New)
+### Figma Integration
+
+Figma provides design-system-driven assets as an alternative to AI generation, especially for **UI** and **tiles** categories.
+
+**5 integration points:**
+
+1. **UI concept art** — Export designed Figma components (health bars, buttons, HUD elements) as pixel-perfect PNGs. Replaces AI generation for the concept phase.
+2. **Tile concept art** — Pull grid-aligned, seamless tile designs from Figma. Ensures precise tiling geometry.
+3. **Reference images** — Designer sketches from Figma become image-to-3D input for the model phase (Hunyuan3D/Hyper3D accept reference images).
+4. **Design tokens → accent colors** — Extract fill color styles from Figma and apply them as `asset.color` values for consistent rendering across the pipeline.
+5. **Component discovery** — List available Figma components for mapping to visual assets.
+
+**How it works:** Assets with a `figmaNodeId` field are exported from Figma via the REST API. Assets without `figmaNodeId` skip Figma instantly (`BackendSkipError`) and fall through to AI generation — no API call, no delay.
+
+**Setting a Figma source on an asset:**
+```bash
+# Set Figma node ID on an existing asset
+curl -X POST https://assetgen.korczewski.de/api/visual-library/health_bar/figma-source \
+  -H 'Content-Type: application/json' -d '{"nodeId":"123:456"}'
+
+# Or include when creating the asset
+curl -X POST https://assetgen.korczewski.de/api/visual-library \
+  -H 'Content-Type: application/json' \
+  -d '{"id":"health_bar","name":"Health Bar","category":"ui","figmaNodeId":"123:456"}'
+
+# Generate — Figma adapter pulls from Figma (no AI generation)
+curl -X POST https://assetgen.korczewski.de/api/visual-library/health_bar/generate/concept
+```
+
+**Extracting design tokens (colors):**
+```bash
+# List available color styles
+curl -X POST https://assetgen.korczewski.de/api/figma/design-tokens \
+  -H 'Content-Type: application/json' -d '{}'
+# Returns: { "tokens": { "Primary/Red": { "hex": "#ff3333", "opacity": 1 }, ... } }
+
+# Extract AND apply matching colors to assets
+curl -X POST https://assetgen.korczewski.de/api/figma/design-tokens \
+  -H 'Content-Type: application/json' -d '{"apply":true}'
+```
+
+**Listing Figma components:**
+```bash
+curl https://assetgen.korczewski.de/api/figma/components
+# Returns: { "components": [{ "nodeId": "123:456", "name": "HealthBar", ... }], "count": N }
+```
+
+**Checking Figma status:**
+```bash
+curl https://assetgen.korczewski.de/api/figma/status
+# Returns: { "available": true/false, "fileKey": "...", "hasApiKey": true/false }
+```
+
+**Prerequisites for Figma integration:**
+1. `FIGMA_API_KEY` env var — [Personal Access Token](https://www.figma.com/developers/api#access-tokens)
+2. `FIGMA_FILE_KEY` env var — from your Figma file URL: `figma.com/design/<FILE_KEY>/...`
+3. Figma nodes organized by category (UI components, tile assets, etc.)
+
+**Interactive Figma MCP (Claude Code sessions):**
+The official Figma MCP server is configured in `.mcp.json` for interactive sessions. Use `mcp-figma` tools to browse files, export nodes, and write to canvas. Setup: set `FIGMA_API_KEY` in `.mcp.json` → restart Claude Code → use Figma tools directly.
+
+### Backend Priority Configuration
+
+Priorities are configured in `config/visual-config.json`. Categories can override the global concept priority.
+
+| Phase | Priority | Default Fallback Chain |
+|-------|----------|------------------------|
+| concept | `conceptBackendPriority` | comfyui → gemini-imagen → siliconflow → diffusers |
+| concept (ui) | per-category override | **figma** → comfyui → gemini-imagen → siliconflow |
+| concept (tiles) | per-category override | **figma** → comfyui → gemini-imagen → siliconflow |
+| model | `modelBackendPriority` | **blender-mcp** → hunyuan3d-local → triposr → meshy → hyper3d → hunyuan3d |
+| render | `renderBackendPriority` | **blender-mcp** → blender (CLI via GPU worker) |
+| pack | — | packer (always) |
+
+### Environment Variables
 
 | Variable | Required For | Description |
 |----------|-------------|-------------|
-| `HUNYUAN3D_LOCAL_URL` | hunyuan3d-local adapter | Override local server URL (default: `http://10.10.0.3:8081`) |
+| `FIGMA_API_KEY` | figma adapter | Figma Personal Access Token |
+| `FIGMA_FILE_KEY` | figma adapter | Default Figma file key (from URL) |
+| `BLENDER_MCP_HOST` | blender-mcp adapter | Override Blender MCP host (default: `10.10.0.3`) |
+| `BLENDER_MCP_PORT` | blender-mcp adapter | Override Blender MCP port (default: `9876`) |
+| `HUNYUAN3D_LOCAL_URL` | hunyuan3d-local, blender-mcp | Override local server URL (default: `http://10.10.0.3:8081`) |
 | `HYPER3D_API_KEY` | hyper3d adapter | Hyper3D Rodin API key (paid subscription) |
 | `HUNYUAN3D_API_KEY` or `FAL_KEY` | hunyuan3d adapter | fal.ai API key for Hunyuan3D cloud ($0.16/gen) |
 | `SKETCHFAB_API_KEY` | sketchfab adapter | Sketchfab v3 API token (free account) |
 
-**Default pipeline is fully free**: `hunyuan3d-local` + `triposr` need no API keys (just GPU worker running).
+**Default pipeline is fully free**: `blender-mcp` + `hunyuan3d-local` need no API keys (just Blender + GPU worker running). Figma integration requires a free Figma account + API token.
 
 ## Commands
 
@@ -244,3 +353,5 @@ npm run test          # node --test test/api.test.js (49+ API tests)
 - `GET /api/worker-status` — GPU worker connection state, hostname, GPU name
 - `GET /api/queue-depth` — Job queue depth (used by KEDA for auto-scaling)
 - `GET /api/prerequisites` — Python, ffmpeg, CUDA availability
+- `GET /api/blender-mcp/status` — Blender MCP addon reachability + scene info
+- `GET /api/figma/status` — Figma API key validity + file key config
