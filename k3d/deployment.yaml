@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assetgenerator
+  labels:
+    app: assetgenerator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assetgenerator
+  template:
+    metadata:
+      labels:
+        app: assetgenerator
+    spec:
+      containers:
+        - name: assetgenerator
+          image: registry.localhost:5000/assetgenerator:latest
+          env:
+            - name: PORT
+              value: "5200"
+            - name: NODE_ENV
+              value: development
+            - name: BROWSER
+              value: none
+            - name: ELEVENLABS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: ELEVENLABS_API_KEY
+                  optional: true
+            - name: SUNO_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: SUNO_API_KEY
+                  optional: true
+            - name: HYPER3D_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: HYPER3D_API_KEY
+                  optional: true
+            - name: HUNYUAN3D_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: HUNYUAN3D_API_KEY
+                  optional: true
+            - name: SKETCHFAB_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: assetgen-secrets
+                  key: SKETCHFAB_API_KEY
+                  optional: true
+            - name: TZ
+              value: Europe/Berlin
+          ports:
+            - name: http
+              containerPort: 5200
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5200
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5200
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+            limits:
+              memory: 512Mi
+              cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: assetgenerator
+spec:
+  selector:
+    app: assetgenerator
+  ports:
+    - name: http
+      port: 5200
+      targetPort: 5200

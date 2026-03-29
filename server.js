@@ -1694,8 +1694,11 @@ httpServer.listen(PORT, async () => {
     }
   }
 
-  try {
-    const openModule = await import('open');
-    openModule.default(`http://localhost:${PORT}`);
-  } catch { /* silent */ }
+  if (process.env.BROWSER !== 'none') {
+    try {
+      const openModule = await import('open');
+      const cp = openModule.default(`http://localhost:${PORT}`);
+      if (cp && typeof cp.on === 'function') cp.on('error', () => {});
+    } catch { /* silent */ }
+  }
 });
