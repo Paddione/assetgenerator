@@ -36,7 +36,7 @@ result = remove(img)
 result.save("${imagePath}", "PNG")
 print("OK")
 `],
-    cwd: '/home/patrick/projects/Assetgenerator',
+    cwd: process.env.ASSETGENERATOR_ROOT || new URL('..', import.meta.url).pathname,
   });
 
   if (result.code !== 0) {
